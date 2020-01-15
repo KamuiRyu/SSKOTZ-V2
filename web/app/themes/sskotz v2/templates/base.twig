@@ -1,0 +1,184 @@
+{% block html_head_container %} {% include 'html-header.twig' %} {% block head %} {% endblock %}
+</head>
+{% endblock %}
+
+<body class="{{body_class}}" data-template="base.twig">
+    <div class="wrapper">
+        <div class="canvas">
+            <header class="header">
+                {% block header %}
+                <div class="wrapper">
+                    <div class="nav-group">
+                        <div class="fixed-top">
+                            <nav class="navbar nav-sub navbar-expand-lg" id="nav-sub">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item text-center time-block">
+                                        <a class="nav-link">
+                                            <small>Horario do Servidor</small><br>
+                                            <span>
+												<span id="server-time"></span> UTC (-05:00)
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item text-center m-auto">
+                                        <ul class="float-right list-unstyled align-self-center d-flex">
+                                            <li class="d-inline-block px-2">
+                                                <div class="theme-switch-wrapper">
+                                                    <label class="theme-switch switch-slide m-auto switch-desktop">
+														<input type="checkbox" class="switch-input">
+														<span class="switch-label" data-on="dark" data-off="light"></span> 
+														<span class="switch-handle"></span> 
+													</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link">Faça sua doação: </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            <ul class="float-right list-unstyled align-self-center d-flex">
+                                                <li class="d-inline-block px-2">
+                                                    <img src="{{ site.theme.link }}/assets/images/ppay-icon.png" width="20" class="m-auto">
+                                                </li>
+                                                <li class="d-inline-block px-2">
+                                                    <img src="{{ site.theme.link }}/assets/images/paypal-icon.png" width="20" class="m-auto">
+                                                </li>
+                                                <li class="d-inline-block px-2">
+                                                    <img src="{{ site.theme.link }}/assets/images/patreon-icon.png" width="20" class="m-auto">
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <nav class="navbar navbar-expand-lg nav-main bg-inverse navbar-inverse justify-content-lg-center justify-content-start" id="nav-main">
+                            <a class="navbar-toggler float-right menu-link border-0" style="z-index: 10000;" id="toggle-sidenav" href="#menu">
+                                <i class="fas fa-bars icon-menu"></i>
+                            </a>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mx-auto text-md-center text-left">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Início</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Guias</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Novidades</a>
+                                    </li>
+                                    <li class="nav-item my-auto">
+                                        <a class="nav-link navbar-brand mx-0 d-none d-md-inline" href=""><img src="{{ site.theme.link }}/assets/images/logo.png" width="150" class="m-auto"></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Cosmos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Cavaleiros</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Contato</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sidenav closed" id="sidenav">
+                                <div class="sidenav-body my-auto">
+                                    <ul class="sidenav-ul list-unstyled">
+                                        <li class="sidenav-logo text-center mb-3">
+                                            <a href="#"><img src="{{ site.theme.link }}/assets/images/logo.png" class="img-fluid" width="150"></a>
+                                        </li>
+                                        <li class="sidenav-donate text-center">
+                                            <span>Faça sua doação</span>
+                                            <ul class="list-unstyled align-self-center justify-content-center d-flex">
+                                                <li class="d-inline-block px-2">
+                                                    <img src="{{ site.theme.link }}/assets/images/ppay-icon.png" width="25" class="m-auto">
+                                                </li>
+                                                <li class="d-inline-block px-2">
+                                                    <img src="{{ site.theme.link }}/assets/images/paypal-icon.png" width="25" class="m-auto">
+                                                </li>
+                                                <li class="d-inline-block px-2">
+                                                    <img src="{{ site.theme.link }}/assets/images/patreon-icon.png" width="25" class="m-auto">
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidenav-category">
+                                            <span>Principal</span>
+                                        </li>
+                                        <li class="sidenav-item">
+                                            <a class="sidenav-link" href="#">Início</a>
+                                        </li>
+                                        <li class="sidenav-item">
+                                            <a class="sidenav-link" href="#">Novidades</a>
+                                        </li>
+                                        <li class="sidenav-item">
+                                            <a class="sidenav-link" href="#">Cosmos</a>
+                                        </li>
+                                        <li class="sidenav-item">
+                                            <a class="sidenav-link" href="#">Cavaleiros</a>
+                                        </li>
+                                        <li class="sidenav-item">
+                                            <a class="sidenav-link" href="#">Contato</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="sidenav-footer my-auto">
+                                    <ul class="sidenav-ul list-unstyled">
+                                        <li class="sidenav-item">
+                                            <div class="theme-switch-wrapper">
+                                                <label class="theme-switch switch-slide m-auto switch-mobile">
+													<input type="checkbox" class="switch-input">
+													<span class="switch-label" data-on="dark" data-off="light"></span> 
+													<span class="switch-handle"></span> 
+												</label>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item text-center time-block">
+                                            <a class="nav-link">
+                                                <small>Horario do Servidor</small><br>
+                                                <span>
+													<span id="server-time"></span> UTC (-05:00)
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- <nav id="nav-main" class="nav-main" role="navigation">
+							{% include "menu.twig" with {'items': menu.get_items} %}
+						</nav> -->
+                    </div>
+                    <div class="header-banner">
+                    </div>
+                </div>
+                {% endblock %}
+            </header>
+            <main>
+                <div class="wrapper">
+                    {% block content %} Sorry, no content {% endblock %}
+                </div>
+                {% if sidebar %}
+                <aside class="layout-sidebar">
+                    {{sidebar}}
+                </aside>
+                {% endif %}
+            </main>
+            {% block footer %}
+            <footer id="footer">
+                {% include 'footer.twig' %}
+            </footer>
+            {{ function('wp_footer') }} {% endblock %}
+        </div>
+    </div>
+
+    <script type="application/javascript" src="{{ site.theme.link }}/assets/lib/jquery/jquery.min.js"></script>
+    <script type="application/javascript" src="{{ site.theme.link }}/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="{{ site.theme.link }}/assets/lib/popperjs/popper.min.js"></script>
+    <script type="application/javascript" src="{{ site.theme.link }}/assets/js/main.js"></script>
+</body>
+
+</html>
