@@ -24,10 +24,9 @@
                                         <ul class="float-right list-unstyled align-self-center d-flex">
                                             <li class="d-inline-block px-2">
                                                 <div class="theme-switch-wrapper">
-                                                    <label class="theme-switch switch-slide m-auto switch-desktop">
+                                                    <label id="switch" class="switch theme-switch m-auto switch-desktop">
 														<input type="checkbox" class="switch-input">
-														<span class="switch-label" data-on="dark" data-off="light"></span> 
-														<span class="switch-handle"></span> 
+														<span class="slider round"></span>
 													</label>
                                                 </div>
                                             </li>
@@ -38,20 +37,24 @@
                                     <li class="nav-item">
                                         <a class="nav-link">Faça sua doação: </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link">
-                                            <ul class="float-right list-unstyled align-self-center d-flex">
-                                                <li class="d-inline-block px-2">
+                                    <li class="nav-item align-self-center">
+                                        <ul class="float-right list-unstyled d-flex">
+                                            <li class="d-inline-block px-2">
+                                                <a href="#">
                                                     <img src="{{ site.theme.link }}/assets/images/ppay-icon.png" width="20" class="m-auto">
-                                                </li>
-                                                <li class="d-inline-block px-2">
+                                                </a>
+                                            </li>
+                                            <li class="d-inline-block px-2">
+                                                <a href="#">
                                                     <img src="{{ site.theme.link }}/assets/images/paypal-icon.png" width="20" class="m-auto">
-                                                </li>
-                                                <li class="d-inline-block px-2">
+                                                </a>
+                                            </li>
+                                            <li class="d-inline-block px-2">
+                                                <a href="#">
                                                     <img src="{{ site.theme.link }}/assets/images/patreon-icon.png" width="20" class="m-auto">
-                                                </li>
-                                            </ul>
-                                        </a>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </nav>
@@ -91,17 +94,19 @@
                                         <li class="sidenav-logo text-center mb-3">
                                             <a href="#"><img src="{{ site.theme.link }}/assets/images/logo.png" class="img-fluid" width="150"></a>
                                         </li>
-                                        <li class="sidenav-donate text-center">
+                                        <li class="sidenav-donate text-center align-self-center justify-content-center">
                                             <span>Faça sua doação</span>
-                                            <ul class="list-unstyled align-self-center justify-content-center d-flex">
-                                                <li class="d-inline-block px-2">
-                                                    <img src="{{ site.theme.link }}/assets/images/ppay-icon.png" width="25" class="m-auto">
-                                                </li>
-                                                <li class="d-inline-block px-2">
-                                                    <img src="{{ site.theme.link }}/assets/images/paypal-icon.png" width="25" class="m-auto">
-                                                </li>
-                                                <li class="d-inline-block px-2">
-                                                    <img src="{{ site.theme.link }}/assets/images/patreon-icon.png" width="25" class="m-auto">
+                                            <ul class="list-unstyled d-flex" style="width: 250px;">
+                                                <li class="d-inline-block px-2 d-flex" style="width: 250px;">
+                                                    <a href="#" class="d-inline-block m-auto text-center">
+                                                        <img src="{{ site.theme.link }}/assets/images/ppay-icon.png" width="20" class="m-auto">
+                                                    </a>
+                                                    <a href="#" class="d-inline-block m-auto text-center">
+                                                        <img src="{{ site.theme.link }}/assets/images/paypal-icon.png" width="20" class="m-auto">
+                                                    </a>
+                                                    <a href="#" class="d-inline-block m-auto text-center">
+                                                        <img src="{{ site.theme.link }}/assets/images/patreon-icon.png" width="20" class="m-auto">
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -129,10 +134,9 @@
                                     <ul class="sidenav-ul list-unstyled">
                                         <li class="sidenav-item">
                                             <div class="theme-switch-wrapper">
-                                                <label class="theme-switch switch-slide m-auto switch-mobile">
+                                                <label id="switch" class="switch theme-switch m-auto switch-mobile">
 													<input type="checkbox" class="switch-input">
-													<span class="switch-label" data-on="dark" data-off="light"></span> 
-													<span class="switch-handle"></span> 
+													<span class="slider round"></span>
 												</label>
                                             </div>
                                         </li>
