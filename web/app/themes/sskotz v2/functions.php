@@ -163,5 +163,57 @@ class StarterSite extends Timber\Site {
 	}
 
 }
+add_action('show_user_profile', 'extra_user_profile_fields');
+add_action('edit_user_profile', 'extra_user_profile_fields');
 
+function extra_user_profile_fields($user)
+{ ?>
+	<h3><?php _e("Redes sociais", "blank"); ?></h3>
+
+	<table class="form-table">
+		<tr>
+			<th><label for="facebook"><?php _e("Facebook"); ?></label></th>
+			<td>
+				<input type="url" name="facebook" id="facebook" value="<?php echo esc_attr(get_the_author_meta('facebook', $user->ID)); ?>" class="regular-text" /><br />
+				<span class="description"><?php _e("Por favor, digite o link do seu perfil ou pagina do Facebook."); ?></span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="instagram"><?php _e("Instagram"); ?></label></th>
+			<td>
+				<input type="url" name="instagram" id="instagram" value="<?php echo esc_attr(get_the_author_meta('instagram', $user->ID)); ?>" class="regular-text" /><br />
+				<span class="description"><?php _e("Por favor, digite o link do seu Instagram."); ?></span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="twitter"><?php _e("Twitter"); ?></label></th>
+			<td>
+				<input type="url" name="twitter" id="twitter" value="<?php echo esc_attr(get_the_author_meta('twitter', $user->ID)); ?>" class="regular-text" /><br />
+				<span class="description"><?php _e("Por favor, digite o link do seu Twitter."); ?></span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="live"><?php _e("Live"); ?></label></th>
+			<td>
+				<input type="url" name="live" id="live" value="<?php echo esc_attr(get_the_author_meta('live', $user->ID)); ?>" class="regular-text" /><br />
+				<span class="description"><?php _e("Por favor, digite o link da sua live."); ?></span>
+			</td>
+		</tr>
+	</table>
+<?php }
+
+add_action('personal_options_update', 'save_extra_user_profile_fields');
+add_action('edit_user_profile_update', 'save_extra_user_profile_fields');
+
+function save_extra_user_profile_fields($user_id)
+{
+
+	if (!current_user_can('edit_user', $user_id)) {
+		return false;
+	}
+	update_user_meta($user_id, 'facebook', $_POST['facebook']);
+	update_user_meta($user_id, 'twitter', $_POST['twitter']);
+	update_user_meta($user_id, 'instagram', $_POST['instagram']);
+	update_user_meta($user_id, 'live', $_POST['live']);
+}
 new StarterSite();

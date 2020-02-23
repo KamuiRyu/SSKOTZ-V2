@@ -1,11 +1,233 @@
-{% extends "base.twig" %}
+{% extends "base.twig" %} {% block head %} {{ parent() }}
+<link rel="stylesheet" href="{{ site.theme.link }}/assets/css/slick/slick.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{ site.theme.link }}/assets/css/slick/slick-theme.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{ site.theme.link }}/assets/css/index.css" type="text/css" media="screen" /> {% endblock %} {% block content %}
+<section class="pt-4 pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center mb-3">
+                <h2 class="text-uppercase">Últimas notícias</h2>
+                <p>Aqui você pode checar as novidades sobre Saint Seiya Awakening. Não deixe de ficar por dentro das notícias mais recentes.</p>
+            </div>
+            <div class="col-12">
+                <ul class="post-list p-0 d-flex align-items-center justify-content-center m-auto">
+                    {% if spotlight %} {% for post in spotlight %}
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <li class="post-card post-spotlight">
+                            <a href="{{ post.post_link }}" alt="Link da postagem {{ post.title }}">
+                                <span class="post-card-tag"><i class="far fa-star fa-lg"></i> Destaque</span>
+                                <img src="{{ post.post_img }}" alt=" {{ post.post_title }} ">
+                                <div class="post-card-info">
+                                    {% for tag in post.post_tag %} {% if tag.slug != 'news' and tag.slug != 'spotlight'%}
+                                    <span class="post-card-category {{ tag.slug }}-category">
+                                        
+                                        {{tag.name}}
+                                        
+                                    </span> {% endif %}{% endfor %}
 
-{% block content %}
-	<h2>{{ foo }}</h2>
-	<p>{{ qux }}</p>
-	{% for post in posts %}
-		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-	{% endfor %}
-	
-	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+                                    <h5>{{ post.post_title }}</h5>
+                                </div>
+                            </a>
+                        </li>
+                    </div>
+                    {% endfor %} {% endif %} {% if public %}
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 px-md-0 text-center justify-content-center">
+                        {% for post in public %}
+                        <li class="post-card">
+                            <a href="{{ post.post_link }}" alt="Link da postagem {{ post.title }}">
+                                <img src="{{ post.post_img }}" alt=" {{ post.post_title }} ">
+                                <div class="post-card-info">
+                                    {% for tag in post.post_tag %} {% if tag.slug != 'news' and tag.slug != 'spotlight'%}
+                                    <span class="post-card-category {{ tag.slug }}-category">
+                                        
+                                        {{tag.name}}
+                                        
+                                    </span> {% endif %}{% endfor %}
+                                    <h5>{{ post.post_title }}</h5>
+                                </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-4 last-characters parallex">
+    <div class="container position-relative h-100">
+        <div class="row h-100">
+            {% for saint in character %}
+            <div id="{{ saint.character_slug }}" class="icharacter flex-column justify-content-center align-items-center h-100 w-100" {% if loop.first %} {% else %} style="display:none" {% endif %}>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 position-absolute character-picture">
+                    <img src="{{ saint.character_picture }}" height="680" alt=" Imagem {{ saint.character_name }} ">
+                </div>
+                <div class="character-info col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 position-absolute text-center text-md-left" style="z-index:2;">
+                    <h1 class="text-white">{{ saint.character_name }}</h1>
+                    <p class="text-white">{{ saint.character_description }}</p>
+                    <ul class="list-inline character-skills" style="margin-bottom: 2rem;">
+                        {% for skills in saint.character_skills %} {% if skills not in [1,2,3,4] %}
+                        <li class="list-inline-item">
+                            <img src="{{ skills.img }}" class="img-fluid" alt=" {{ saint.character_name }} Skills" />
+                        </li>
+                        {% endif %} {% endfor %}
+                    </ul>
+                    <a href="#" class="character-more" alt="Ver mais sobre {{ saint.character_name }}">Ver mais</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row position-absolute w-100 px-3" style="bottom:0;z-index:2;">
+            <div class="slider-characters w-100 text-center">
+                {% for saint in character %}
+                <div>
+                    <button class="p-0 {{ saint.character_rarity }}-ranking item-character" onclick="openCharacter('{{ saint.character_slug }}')">
+						<img data-lazy="{{ saint.character_thumb }}" class="text-center" alt="Miniatura de {{ saint.character_name }}" />
+					</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-4 guide-session">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-3">
+                <h2 class="text-uppercase">Guias</h2>
+                <p>Use esses guias para melhorar sua conta.</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 py-2">
+                <div class="guide-item" onclick="window.location.href='{{site.url}}/guides/cosmos'">
+                    <img src="{{ site.theme.link }}/assets/images/guide-cosmos.png" class="img-fluid" alt="Guia de cosmos" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 py-2">
+                <div class="guide-item guide-item-animation guide-item-border-animation" onclick="window.location.href='{{site.url}}/guides/dungeons'">
+                    <img src="{{ site.theme.link }}/assets/images/guide-dungeons.png" class="img-fluid" alt="Guia de masmorras" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 py-2">
+                <div class="guide-item" onclick="window.location.href='{{site.url}}/guides/tips'">
+                    <img src="{{ site.theme.link }}/assets/images/guide-tips.png" class="img-fluid" alt="Guia de dicas" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 py-2">
+                <div class="guide-item" onclick="window.location.href='{{site.url}}/guides/others'">
+                    <img src="{{ site.theme.link }}/assets/images/guide-others.png" class="img-fluid" alt="Guia de outras coisas" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row">
+    <div class="container">
+        <div class="col-12">
+            <div class="mini divider">
+                <div class="sk-folding-cube">
+                    <div class="sk-cube1 sk-cube"></div>
+                    <div class="sk-cube2 sk-cube"></div>
+                    <div class="sk-cube4 sk-cube"></div>
+                    <div class="sk-cube3 sk-cube"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="py-4 members-session">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="text-uppercase">Nossa equipe</h2>
+                <p>Essa é a equipe responsável pela criação desse site. Cada um responsável por uma parte para criar esse site para o uso de todos.</p>
+            </div>
+            {% for member in team %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-2 mx-auto">
+                <div class="our-team">
+                    <div class="pic m-auto">
+                        <img src="{{ member.avatar }}" alt="" class="img-fluid" alt="Foto de {{ member.name }}">
+                        <ul class="social">
+                            {% if member.twitter %}
+                            <li><a href="{{ member.twitter }}" target="_blank"><i class="fab fa-twitter">
+                            </i></a></li>
+                            {% endif %} {% if member.facebook %}
+                            <li><a href="{{ member.facebook }}" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                            {% endif %} {% if member.instagram %}
+                            <li><a href="{{ member.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            {% endif %} {% if member.live %}
+                            <li><a href="{{ member.live }}" target="_blank"><i class="{% if member.plataform_live == 'twitch' %}fab fa-twitch{% elseif member.plataform_live == 'youtube' %}fab fa-youtube{% elseif member.plataform_live == 'facebook' %}fa-facebook-f{% else %}fa fa-headset {% endif %}"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="team-content">
+                        <h3 class="title">{{ member.name }}</h3>
+                        <span class="post">{{ member.role }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %} {% block script %} {{ parent() }}
+<script type="application/javascript" src="{{ site.theme.link }}/assets/js/slick/slick.js"></script>
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('.slider-characters').slick({
+            centerMode: true,
+            slidesToShow: 5,
+            centerPadding: '10px',
+            arrows: true,
+            responsive: [{
+                breakpoint: 992,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    slidesToShow: 3
+                }
+            }, {
+                breakpoint: 768,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    slidesToShow: 3
+                }
+            }, {
+                breakpoint: 576,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '10px',
+                    slidesToShow: 2
+                }
+            }],
+            prevArrow: '<button class="a-left control-c prev arrow-prev"></button>',
+            nextArrow: '<button class="a-right control-c next arrow-next"></button>'
+        });
+    });
+
+    function openCharacter(characterName) {
+        var i;
+        var x = document.getElementsByClassName("icharacter");
+        for (i = 0; i < x.length; i++) {
+            var d = x[i].id;
+            if (d.id != characterName) {
+                $("#" + d).css({
+                    display: 'none'
+                }).animate({
+                    opacity: 0
+                }, 100)
+            }
+        }
+        $("#" + characterName).css({
+            display: 'flex'
+        }).animate({
+            opacity: 1
+        }, 100);
+
+    }
+</script>
+
 {% endblock %}

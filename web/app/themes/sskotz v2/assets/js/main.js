@@ -46,7 +46,7 @@ function menuSticky() {
 function openSidenav() {
     $(".sidenav").removeClass('closed');
     $(".sidenav").addClass('opening');
-    $(".sidenav").css('width', '250px');
+    $('.sidenav').css('left', '0');
     $('.canvas').css('margin-left', '250px');
     $('#toggle-sidenav .icon-menu').removeClass('fa-bars');
     $('#toggle-sidenav .icon-menu').addClass('fa-times');
@@ -60,7 +60,7 @@ function openSidenav() {
 function closeSidenav() {
     $(".sidenav").addClass('closed');
     $(".sidenav").removeClass('opened');
-    $(".sidenav").css('width', '0px');
+    $('.sidenav').css('left', '-250px');
     $('.canvas').css('margin-left', '0px');
     $('#toggle-sidenav .icon-menu').removeClass('fa-times');
     $('#toggle-sidenav .icon-menu').addClass('fa-bars');
@@ -101,3 +101,7 @@ $('body').click(function(e) {
         }
     }
 });
+
+$(".post-card").click(function(e) {
+    window.location.assign(e.currentTarget.firstElementChild.href);
+})

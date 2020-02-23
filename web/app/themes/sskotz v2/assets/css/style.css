@@ -5,10 +5,10 @@
 */
 
 @import url("/app/themes/sskotz v2/assets/fonts/fontawesome/css/all.min.css");
-@import url("/app/themes/sskotz v2/assets/fonts/roboto/font.css");
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap');
 :root {
     --primary-color: #f5b453;
-    --secondary-color: #536390;
+    --secondary-color: #502a80;
     --font-color: #595959;
     --bg-color: #f5f5f5;
     --navsub-color: #303030;
@@ -19,13 +19,35 @@
 
 [data-theme="dark"] {
     --primary-color: #eba53f;
-    --secondary-color: #818cab;
+    --secondary-color: #502a80;
     --font-color: #e4e4e4;
     --bg-color: #1a1a1a;
     --navsub-color: #f5f5f5;
     --navmain-color: #1a1a1a;
     --timesmall-color: #303030;
     --fontinverse-color: #595959;
+}
+
+footer {
+    background-color: var(--navsub-color);
+    color: var(--fontinverse-color);
+}
+
+footer ul li a {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    text-decoration: none;
+    transition: all .4s ease-in-out;
+    color: var(--fontinverse-color);
+}
+
+footer ul li a:hover {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+#sticky-footer {
+    flex-shrink: none;
 }
 
 .wrapper {
@@ -54,9 +76,10 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 99999;
+    z-index: 1000;
+    width: 250px;
     top: 0;
-    left: 0;
+    left: -250px;
     background-color: var(--navsub-color);
     overflow-x: hidden;
     transition: 0.8s;
@@ -116,16 +139,6 @@
     transform: translateX(10px);
     color: var(--primary-color) !important;
     text-decoration: none;
-}
-
-.nav-group .nav-main .opening,
-.nav-group .nav-main .opened {
-    left: 0;
-    opacity: 1;
-}
-
-.nav-group .nav-main .closed {
-    opacity: 0;
 }
 
 .theme-switch-wrapper {
@@ -227,10 +240,10 @@ input:checked+.slider:before {
 
 body {
     padding-top: 70px;
-    transition: all 0.80s ease-in-out;
-    height: 1920px;
+    transition: margin-left 0.80s ease-in-out;
+    transition: background-color 0.80s ease-in-out;
     background-color: var(--bg-color) !important;
-    font-family: 'Roboto', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+    font-family: 'Dosis', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
 }
 
 .nav-group {
@@ -276,12 +289,12 @@ body {
 
 .nav-group .nav-main .navbar-collapse li a {
     height: 76px;
-    line-height: 76px;
+    line-height: 70px;
     padding-top: 0;
     text-transform: uppercase;
     font-weight: bold;
     color: var(--font-color);
-    transition: all 0.30s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .nav-group .nav-main .navbar-collapse li a:hover {
@@ -307,10 +320,102 @@ body {
     background-size: cover;
     background-position: 50% 50%;
     padding-top: 24px;
-    border-top: 1px solid#565656;
-    border-bottom: 1px solid#565656;
-    box-shadow: inset 0 10px 20px -10px #000;
     height: 50vh;
+}
+
+.header-banner::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    height: 40%;
+    content: "";
+    background: linear-gradient(0deg, var(--bg-color), rgba(0, 05, 0, 0));
+}
+
+section h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span,
+strong {
+    color: var(--font-color);
+}
+
+.divider {
+    position: relative;
+    margin: 30px 0;
+}
+
+.divider::before {
+    content: "";
+    border-bottom: 1px solid #af7e1f;
+    border-bottom-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    position: absolute;
+    right: calc(50% + 20px);
+    left: -20px;
+    top: 50%;
+}
+
+.divider::after {
+    content: "";
+    border-bottom: 1px solid #af7e1f;
+    border-bottom-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    position: absolute;
+    left: calc(50% + 20px);
+    right: -20px;
+    top: 50%;
+}
+
+.divider.mini .sk-folding-cube {
+    margin: 10px auto;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.divider.mini .sk-folding-cube .sk-cube {
+    float: left;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    -webkit-transform: scale(.9);
+    transform: scale(.9);
+}
+
+.divider .sk-folding-cube .sk-cube::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+
+.divider.mini .sk-folding-cube .sk-cube2 {
+    -webkit-transform: scale(.9) rotate(90deg);
+    transform: scale(.9) rotate(90deg);
+}
+
+.divider.mini .sk-folding-cube .sk-cube4 {
+    -webkit-transform: scale(.9) rotate(270deg);
+    transform: scale(.9) rotate(270deg);
+}
+
+.divider.mini .sk-folding-cube .sk-cube3 {
+    -webkit-transform: scale(.9) rotate(180deg);
+    transform: scale(.9) rotate(180deg);
 }
 
 @media only screen and (max-width: 600px) {
@@ -325,6 +430,17 @@ body {
     }
     .fixed-top-2 {
         margin-top: 0px;
+    }
+    .post-card {
+        width: 100%;
+        height: 210px;
+        border-left: 0 solid transparent;
+        border-right: 0 solid transparent;
+        border-bottom: 1rem solid transparent;
+    }
+    .post-spotlight {
+        height: 436px !important;
+        width: 100% !important;
     }
 }
 
@@ -341,6 +457,20 @@ body {
     .fixed-top-2 {
         margin-top: 0px;
     }
+    .ft-main {
+        justify-content: space-around;
+    }
+    .post-card {
+        width: 100%;
+        height: 210px;
+        border-left: 0 solid transparent;
+        border-right: 0 solid transparent;
+        border-bottom: 1rem solid transparent;
+    }
+    .post-spotlight {
+        height: 436px !important;
+        width: 100% !important;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -355,6 +485,16 @@ body {
     }
     .fixed-top-2 {
         margin-top: 0px;
+    }
+    .post-card {
+        width: 48%;
+        height: 210px;
+        border-left: 0.25rem solid transparent;
+        border-right: 0.25rem solid transparent;
+    }
+    .post-spotlight {
+        height: 436px !important;
+        width: 100% !important;
     }
 }
 
@@ -385,5 +525,8 @@ body {
     }
     .fixed-top-2 {
         margin-top: 65;
+    }
+    .ft-main {
+        justify-content: space-evenly;
     }
 }
