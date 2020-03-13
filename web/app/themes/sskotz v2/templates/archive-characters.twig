@@ -1,0 +1,383 @@
+{% extends "base.twig" %}
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ site.theme.link }}//assets/css/archive.css" type="text/css" media="screen"/>
+{% endblock %}
+{% block content %}
+	<section class="saints section py-5">
+		<div class="container h-100">
+			<div class="row h-100 justify-content-center align-items-center">
+				<div class="row">
+					<div class="col-12 mb-5 text-center">
+						<h2 class="text-uppercase">Cavaleiros</h2>
+						<p class="mb-0">Aqui você pode ler mais sobre as habilidades dos cavaleiros presentes no jogo, incluindo recomendação de quais Cosmos utilizar neles, quais habilidades aumentar e muito mais.
+						</p>
+					</div>
+				</div>
+				<div class="row w-100">
+					<div class="col-12 justify-content-center">
+						<div class="tab m-auto text-center">
+							<button class="tablinks active" onclick="openTab(event, 'characters')">
+								<i class="fas fa-users"></i>
+								Cavaleiros</button>
+							<button class="tablinks" onclick="openTab(event, 'tierlist')">
+								<i class="fas fa-trophy"></i>
+								Tier list</button>
+						</div>
+					</div>
+				</div>
+				<div class="row w-100">
+					<div class="col-12">
+						<div class="mini divider">
+							<div class="sk-folding-cube">
+								<div class="sk-cube1 sk-cube"></div>
+								<div class="sk-cube2 sk-cube"></div>
+								<div class="sk-cube4 sk-cube"></div>
+								<div class="sk-cube3 sk-cube"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="tab-content">
+							<div id="characters" class="tabcontent active">
+								<div class="row">
+									{% for character in posts %}
+										<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+											<div class="saint-block d-inline-block text-center">
+												<article>
+													<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+														<div class="character-img">
+															<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+															<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+															</div>
+														</div>
+														{{ character.character_name_comp }}
+													</a>
+												</article>
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+
+							<div id="tierlist" class="tabcontent">
+								<div class="m-auto text-center">
+									<div class="btn-group" role="group" aria-label="Basic example">
+										<button class="tablinks-tier active" onclick="openTabTier(event, 'PVP')">PVP</button>
+										<button class="tablinks-tier" onclick="openTabTier(event, 'PVE')">PVE</button>
+									</div>
+								</div>
+								<div id="PVP" class="tabcontent-tier active">
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tierss-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 1</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pvp == "ss" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tiers-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 2</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pvp == "s" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tiera-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 3</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pvp == "a" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tierb-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 4</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pvp == "b" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row">
+										<div class="col-12 py-3 text-center" id="tierc-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 5</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pvp == "c" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</div>
+								<div id="PVE" class="tabcontent-tier">
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tierss-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 1</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pve == "ss" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tiers-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 2</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pve == "s" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tiera-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 3</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pve == "a" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 py-3 text-center" id="tierb-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 4</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pve == "b" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div class="row">
+										<div class="col-12 py-3 text-center" id="tierc-saint">
+											<div class="col-12 text-center title-saint">
+												<h3 class="text-uppercase text-left">Tier 5</h3>
+											</div>
+										</div>
+										{% for character in posts %}
+											{% if character.character_tier_pve == "c" %}
+												<div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
+													<div class="saint-block d-inline-block text-center">
+														<article>
+															<a href="{{ character.character_link }}" class="text-decoration-none" alt="Página do {{ character.character_name }}" title="{{ character.character_name }}">
+																<div class="character-img">
+																	<img src="{{ character.character_avatar }}" alt="Imagem do {{ character.character_name }}" title="{{ character.character_name }}" class="img-fluid saint-block-img {{ character.character_rarity }}-ranking">
+																	<div class="saint-ranking {{ character.character_rarity }}-rarity">
+																		<img src="{{ site.theme.link }}/assets/images/{{ character.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+																	</div>
+																</div>
+																{{ character.character_name_comp }}
+															</a>
+														</article>
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+{% block script %}
+	{{ parent() }}
+	<script type="application/javascript">
+		function openTab(evt, tabName) {
+var i,
+tabcontent,
+tablinks;
+
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+
+tablinks = document.getElementsByClassName("tablinks");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+
+document.getElementById(tabName).style.display = "block";
+evt.currentTarget.className += " active";
+}
+function openTabTier(evt, tabName) {
+var i,
+tabcontent,
+tablinks;
+
+tabcontent = document.getElementsByClassName("tabcontent-tier");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+
+tablinks = document.getElementsByClassName("tablinks-tier");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+
+document.getElementById(tabName).style.display = "block";
+evt.currentTarget.className += " active";
+}
+	</script>
+{% endblock %}

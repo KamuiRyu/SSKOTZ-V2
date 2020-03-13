@@ -1,0 +1,484 @@
+{% extends "base.twig" %}
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ site.theme.link }}/assets/css/single-characters.css" type="text/css" media="screen"/>
+{% endblock %}
+
+{% block content %}
+
+	<section>
+		<div class="container my-lg-5 my-3">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+					<div class="character-info mb-4 pt-0 character-block">
+						<div class="ch-title mb-3">
+							<span>Informações</span>
+						</div>
+						<div class="text-center">
+							<div class="character-img {{ post.character_rarity }}-ranking mb-1">
+								<img src="{{ post.character_thumb }}" class="img-fluid"/>
+								<div class="character-ranking {{ character.character_rarity }}-rarity">
+									<img src="{{ site.theme.link }}/assets/images/{{ post.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+								</div>
+							</div>
+							<h4>{{ post.character_name }}</h4>
+						</div>
+					</div>
+					<div class="character-cosmos mb-4 pt-0 character-block">
+						<div class="ch-title mb-1">
+							<span>Cosmos Sugeridos</span>
+						</div>
+						<div class="ch-cosmo-type legendary">
+							<span class="ch-cosmo-title">Lendário</span>
+							<ul class="ch-cosmo-list">
+								{% for cosmo in post.cosmos.legendary %}
+									<li>
+										<a href='{{cosmo.link}}'><img src="{{cosmo.cosmo_img.url}}"/></a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="ch-cosmo-type solar">
+							<span class="ch-cosmo-title">Solar</span>
+							<ul class="ch-cosmo-list">
+								{% for cosmo in post.cosmos.solar %}
+									<li>
+										<a href='{{cosmo.link}}'><img src="{{cosmo.cosmo_img.url}}"/></a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="ch-cosmo-type lunar">
+							<span class="ch-cosmo-title">Lunar</span>
+							<ul class="ch-cosmo-list">
+								{% for cosmo in post.cosmos.lunar %}
+									<li>
+										<a href='{{cosmo.link}}'><img src="{{cosmo.cosmo_img.url}}"/></a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="ch-cosmo-type star">
+							<span class="ch-cosmo-title">Estrela</span>
+							<ul class="ch-cosmo-list">
+								{% for cosmo in post.cosmos.star %}
+									<li>
+										<a href='{{cosmo.link}}'><img src="{{cosmo.cosmo_img.url}}"/></a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="character-cosmos-status mb-4 pt-0 character-block">
+						<div class="ch-title mb-3">
+							<span>Cosmo subatributos</span>
+						</div>
+						<ul class="ch-cosmo-sub-list">
+							{% for sub in post.character_sub %}
+								<li class="ch-cosmo-sub-item">
+									<img src="{{ site.theme.link }}/assets/images/{{sub}}_icon.png">
+									{% if sub == 'atqf' %}
+										<span>Ataque físico</span>
+									{% elseif sub == 'atqc' %}
+										<span>Ataque cósmico</span>
+									{% elseif sub == 'dmgc' %}
+										<span>Dano cósmico</span>
+									{% elseif sub == 'nc' %}
+										<span>Nível Crit. F</span>
+									{% elseif sub == 'pv' %}
+										<span>PV</span>
+									{% elseif sub == 'deff' %}
+										<span>Defesa física</span>
+									{% elseif sub == 'defc' %}
+										<span>Defesa cósmica</span>
+									{% elseif sub == 'rs' %}
+										<span>Resistência á status</span>
+									{% elseif sub == 'as' %}
+										<span>Acerto de status</span>
+									{% elseif sub == 'speed' %}
+										<span>Velocidade</span>
+									{% elseif sub == 'ls' %}
+										<span>Roubo de vida</span>
+									{% elseif sub == 'cura' %}
+										<span>Cura</span>
+									{% endif %}
+								</li>
+
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="character-status mb-4 pt-0 character-block">
+						<div class="ch-title">
+							<span>Status Base</span>
+						</div>
+
+						<!-- PV STATUS -->
+						<div class="ch-status">
+							<div class="ch-status-icon d-inline-block">
+								<img src="{{ site.theme.link }}/assets/images/pv_icon.png">
+							</div>
+							{% if post.character_pv < 12486 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+							{% elseif post.character_pv >= 12486 and post.character_pv < 13650 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+							{% elseif post.character_pv >= 13650 and post.character_pv < 16120 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+							{% elseif post.character_pv >= 16120 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+							{% endif %}
+							<div class="ch-status-type d-inline-block">
+								Saúde
+							</div>
+							<div class="ch-status-value d-inline-block float-right">{{ post.character_pv }}</div>
+						</div>
+
+						<!-- ATQ F STATUS -->
+						<div class="ch-status">
+							<div class="ch-status-icon d-inline-block">
+								<img src="{{ site.theme.link }}/assets/images/atqf_icon.png">
+							</div>
+							{% if post.character_atq_f < 2057 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+							{% elseif post.character_atq_f >= 2057 and post.character_atq_f < 2631 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+							{% elseif post.character_atq_f >= 2631 and post.character_atq_f < 2818 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+							{% elseif post.character_atq_f >= 2818 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+							{% endif %}
+							<div class="ch-status-type d-inline-block">
+								Ataque físico
+							</div>
+							<div class="ch-status-value d-inline-block float-right">{{ post.character_atq_f }}</div>
+						</div>
+
+						<!-- ATQ C STATUS -->
+						<div class="ch-status">
+							<div class="ch-status-icon d-inline-block">
+								<img src="{{ site.theme.link }}/assets/images/atqc_icon.png">
+							</div>
+							{% if post.character_atq_c < 2079 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+							{% elseif post.character_atq_c >= 2079 and post.character_atq_c < 2420 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+							{% elseif post.character_atq_c >= 2420 and post.character_atq_c < 2728 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+							{% elseif post.character_atq_c >= 2728 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+							{% endif %}
+							<div class="ch-status-type d-inline-block">
+								Ataque cósmico
+							</div>
+							<div class="ch-status-value d-inline-block float-right">{{ post.character_atq_c }}</div>
+						</div>
+
+						<!-- DEF F STATUS -->
+						<div class="ch-status">
+							<div class="ch-status-icon d-inline-block">
+								<img src="{{ site.theme.link }}/assets/images/deff_icon.png">
+							</div>
+							{% if post.character_def_f < 434 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+							{% elseif post.character_def_f >= 434 and post.character_def_f < 498 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+							{% elseif post.character_def_f >= 498 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+							{% endif %}
+							<div class="ch-status-type d-inline-block">
+								Defesa física
+							</div>
+							<div class="ch-status-value d-inline-block float-right">{{ post.character_def_f }}</div>
+						</div>
+
+						<!-- DEF C STATUS -->
+						<div class="ch-status">
+							<div class="ch-status-icon d-inline-block">
+								<img src="{{ site.theme.link }}/assets/images/defc_icon.png">
+							</div>
+							{% if post.character_def_c < 434 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+							{% elseif post.character_def_c >= 434 and post.character_def_c < 486 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+							{% elseif post.character_def_c >= 486 and post.character_def_c < 533 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+							{% elseif post.character_def_c >= 533 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+							{% endif %}
+							<div class="ch-status-type d-inline-block">
+								Defesa cósmica
+							</div>
+							<div class="ch-status-value d-inline-block float-right">{{ post.character_def_c }}</div>
+						</div>
+
+						<!-- VELOCIDADE STATUS -->
+						<div class="ch-status">
+							<div class="ch-status-icon d-inline-block">
+								<img src="{{ site.theme.link }}/assets/images/speed_icon.png">
+							</div>
+							{% if post.character_speed < 162 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+							{% elseif post.character_speed >= 162 and post.character_speed < 228 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+							{% elseif post.character_speed >= 228 and post.character_speed < 351 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+							{% elseif post.character_speed >= 351 %}
+								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+							{% endif %}
+							<div class="ch-status-type d-inline-block">
+								Velocidade
+							</div>
+							<div class="ch-status-value d-inline-block float-right">{{ post.character_speed }}</div>
+						</div>
+					</div>
+					<div class="character-tabs p-0 character-block">
+						<ul class="ch-links">
+							<li class="ch-link active" onclick="openTab(event, 'skills')">Habilidades
+								<i class="fas fa-chevron-right float-right"></i>
+							</li>
+							<li class="ch-link" onclick="openTab(event, 'comp')">Composições
+								<i class="fas fa-chevron-right float-right"></i>
+							</li>
+							{% if post.skills.skill_has_cr == 1 %}
+								<li class="ch-link" onclick="openTab(event, 'cloth-repair')">Cloth Repair
+									<i class="fas fa-chevron-right float-right"></i>
+								</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-4 mt-lg-0 character-block ch-tabcontents">
+					<div id="skills" class="tabcontent active">
+						<h3 class="mb-4">
+							Habilidades
+						</h3>
+						<div class="ch-skills">
+							{% for skill in post.skills %}
+								{% if skill|length > 4 %}
+									<div class="ch-skill">
+										<div class="row w-100 m-auto">
+											<div class="ch-skill-details w-100">
+												<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+													<div class="ch-skill-img-block">
+														<img src="{{ skill.img }}" class="ch-skill-img">
+														<div class="ch-skill-cost">
+															{% set typePassive = "" %}
+															{% for type in skill.type %}
+																{% if type == 'Passiva' %}
+																	{% set typePassive = 1 %}
+																{% endif %}
+															{% endfor %}
+															{% if typePassive == 1 %}
+																<span class="text-white font-stroke text-center"></span>
+															{% else %}
+																<span class="text-white font-stroke text-center">{{ skill.energy }}</span>
+															{% endif %}
+														</div>
+													</div>
+												</div>
+												<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+													<div class="ch-skill-more-block">
+														<div class="ch-skill-name">
+															<h5>{{ skill.name }}</h5>
+														</div>
+														<div class="ch-skill-types mt-4">
+															{% for type in skill.type %}
+																{% if type == 'Passiva' %}
+																	<div class="ch-type-passive w-auto px-2 d-inline-block mb-1">
+																		{{ type }}
+																	</div>
+																{% elseif type == 'Ataque básico' %}
+																	<div class="ch-type-basic w-auto px-2 d-inline-block mb-1">
+																		{{ type }}
+																	</div>
+																{% else %}
+																	<div class="ch-skill-type w-auto px-2 d-inline-block mb-1">
+																		{{ type }}
+																	</div>
+																{% endif %}
+															{% endfor %}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-12">
+												<div class="ch-skill-up">
+													<p>{{ skill.desc }}</p>
+													<ol>
+														{% if not skill.lv1 is empty %}
+															<li>{{skill.lv1}}</li>
+														{% endif %}
+														{% if not skill.lv2 is empty %}
+															<li>{{skill.lv2}}</li>
+														{% endif %}
+														{% if not skill.lv3 is empty %}
+															<li>{{skill.lv3}}</li>
+														{% endif %}
+														{% if not skill.lv4 is empty %}
+															<li>{{skill.lv4}}</li>
+														{% endif %}
+														{% if not skill.lv5 is empty %}
+															<li>{{skill.lv5}}</li>
+														{% endif %}
+													</ol>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					<div id="comp" class="tabcontent">
+						<h3 class="mb-4">
+							Composições
+						</h3>
+						<div class="ch-comps">
+							{% for comp, items in post.comps %}
+								<div class="ch-comp">
+									<div class="ch-comp-title">
+										<span>Recomendação
+											{{ loop.index }}
+										</span>
+									</div>
+									<ul class="ch-comp-list">
+										<li>
+											<div class="{{ post.character_rarity }}-ranking">
+												<img src="{{ post.character_thumb }}" class="ch-comp-char-img">
+												<img src="{{ site.theme.link }}/assets/images/{{ post.character_rarity }}-rarity.png" class="ch-comp-char-rarity">
+											</div>
+
+										</li>
+										{% for comp, char in items %}
+											<li>
+												<div class="{{ char.rarity }}-ranking">
+													<a href="{{ char.link }}">
+														<img src="{{ char.img }}" class="ch-comp-char-img">
+														<img src="{{ site.theme.link }}/assets/images/{{ char.rarity }}-rarity.png" class="ch-comp-char-rarity">
+													</a>
+												</div>
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+					{% if post.skills.skill_has_cr == 1 %}
+						<div id="cloth-repair" class="tabcontent">
+							<h3 class="mb-4">
+								Cloth Repair
+							</h3>
+							<div class="ch-skills">
+								{% for skill in post.skills_cr %}
+									<div class="ch-skill">
+										<div class="row w-100 m-auto">
+											<div class="ch-skill-details w-100">
+												<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+													<div class="ch-skill-img-block">
+														<img src="{{ skill.img }}" class="ch-skill-img">
+														<div class="ch-skill-cost">
+															{% set typePassive = "" %}
+															{% for type in skill.type %}
+																{% if type == 'Passiva' %}
+																	{% set typePassive = 1 %}
+																{% endif %}
+															{% endfor %}
+															{% if typePassive == 1 %}
+																<span class="text-white font-stroke text-center"></span>
+															{% else %}
+																<span class="text-white font-stroke text-center">{{ skill.energy }}</span>
+															{% endif %}
+														</div>
+													</div>
+												</div>
+												<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+													<div class="ch-skill-more-block">
+														<div class="ch-skill-name">
+															<h5>{{ skill.name }}</h5>
+														</div>
+														<div class="ch-skill-types mt-4">
+															{% for type in skill.type %}
+																{% if type == 'Passiva' %}
+																	<div class="ch-type-passive w-auto px-2 d-inline-block mb-1">
+																		{{ type }}
+																	</div>
+																{% elseif type == 'Ataque básico' %}
+																	<div class="ch-type-basic w-auto px-2 d-inline-block mb-1">
+																		{{ type }}
+																	</div>
+																{% else %}
+																	<div class="ch-skill-type w-auto px-2 d-inline-block mb-1">
+																		{{ type }}
+																	</div>
+																{% endif %}
+															{% endfor %}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-12">
+												<div class="ch-skill-up">
+													<p>{{ skill.desc }}</p>
+													<ol>
+														{% if not skill.lv1 is empty %}
+															<li>{{skill.lv1}}</li>
+														{% endif %}
+														{% if not skill.lv2 is empty %}
+															<li>{{skill.lv2}}</li>
+														{% endif %}
+														{% if not skill.lv3 is empty %}
+															<li>{{skill.lv3}}</li>
+														{% endif %}
+														{% if not skill.lv4 is empty %}
+															<li>{{skill.lv4}}</li>
+														{% endif %}
+														{% if not skill.lv5 is empty %}
+															<li>{{skill.lv5}}</li>
+														{% endif %}
+													</ol>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% if loop.index == 1 %}
+										<div class="ch-clothrepair-down">
+											<div class="arrow-down"></div>
+										</div>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+{% block script %}
+	{{ parent() }}
+	<script type="application/javascript">
+		function openTab(evt, tabName) {
+var i,
+tabcontent,
+tablinks;
+
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+
+tablinks = document.getElementsByClassName("ch-link");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+
+document.getElementById(tabName).style.display = "block";
+evt.currentTarget.className += " active";
+}
+	</script>
+{% endblock %}

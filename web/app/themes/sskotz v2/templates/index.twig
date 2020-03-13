@@ -83,7 +83,10 @@
                 {% for saint in character %}
                 <div>
                     <button class="p-0 {{ saint.character_rarity }}-ranking item-character" onclick="openCharacter('{{ saint.character_slug }}')">
-						<img data-lazy="{{ saint.character_thumb }}" class="text-center" alt="Miniatura de {{ saint.character_name }}" />
+                        <img data-lazy="{{ saint.character_thumb }}" class="text-center" alt="Miniatura de {{ saint.character_name }}" />
+                        <div class="saint-ranking {{ saint.character_rarity }}-rarity">
+                            <img src="{{ site.theme.link }}/assets/images/{{ saint.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+                        </div>
 					</button>
                 </div>
                 {% endfor %}

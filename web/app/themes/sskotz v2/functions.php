@@ -101,6 +101,9 @@ class StarterSite extends Timber\Site {
 		 */
 		add_theme_support( 'title-tag' );
 
+
+		add_theme_support('post-thumbnails'); 
+
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
@@ -216,4 +219,5 @@ function save_extra_user_profile_fields($user_id)
 	update_user_meta($user_id, 'instagram', $_POST['instagram']);
 	update_user_meta($user_id, 'live', $_POST['live']);
 }
+
 new StarterSite();

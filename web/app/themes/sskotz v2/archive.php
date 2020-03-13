@@ -70,16 +70,21 @@ function getArchiveCharacters()
 	$args = array(
 		'post_type' => 'characters',
 		'post_satus' => 'publish',
-		'numberposts' => -1
+		'numberposts' => -1,
+		'order' => 'ASC',
+		'orderby' => 'meta_value',
+		'meta_key' => 'character_rarity'
 	);
 	$characters_posts = Timber::get_posts($args);
 	foreach ($characters_posts as $saint) {
 		$data = get_fields($saint->ID);
 		$info = [
 			'character_name' => $data["character_name"],
+			'character_name_comp' => $data["character_name_comp"],
 			'character_rarity' => $data["character_rarity"],
-			'character_thumb' => $data["character_thumb"]["url"],
-			'character_tier' => $data["character_tier"],
+			'character_avatar' => wp_get_attachment_image_src(get_post_thumbnail_id($saint->ID))[0],
+			'character_tier_pvp' => $data["character_tier_pvp"],
+			'character_tier_pve' => $data["character_tier_pve"],
 			'character_link' => get_permalink($saint->ID),
 		];
 		$characters[] = array_merge($info);

@@ -30,7 +30,6 @@ $guide_cosmo =  get_category_by_slug('cosmos');
 $guide_dg =  get_category_by_slug('dungeons');
 $guide_tips =  get_category_by_slug('tips');
 $guide_others =  get_category_by_slug('others');
-$post_spotlight =  get_category_by_slug('spotlight');
 
 // Buscar postagens para aba de ultimos personagens lançados
 $context['character'] = Timber::get_posts([
@@ -46,15 +45,8 @@ $context['character'] = Timber::get_posts([
 		)
 	)
 ]);
-// Buscar todas as novidades recentes
-$context['public'] = Timber::get_posts([
-	'post_type' => 'post',
-	'post_satus' => 'publish',
-	'numberposts' => 4,
-	'orderby' => 'publish_date',
-	'category__not_in' => array($guide_cosmo->cat_ID, $guide_dg->cat_ID, $guide_tips->cat_ID, $guide_others->cat_ID, $post_spotlight->cat_ID)
-]);
 
+// Buscar a novidade destaque mais recente
 $context['spotlight'] = Timber::get_posts([
 	'post_type' => 'post',
 	'post_satus' => 'publish',
@@ -63,6 +55,19 @@ $context['spotlight'] = Timber::get_posts([
 	'category__not_in' => array($guide_cosmo->cat_ID, $guide_dg->cat_ID, $guide_tips->cat_ID, $guide_others->cat_ID),
 	'category_name' => 'spotlight'
 ]);
+
+$post_spotlight =  $context['spotlight'][0]->ID;
+
+// Buscar todas as novidades recentes
+$context['public'] = Timber::get_posts([
+	'post_type' => 'post',
+	'post_satus' => 'publish',
+	'numberposts' => 4,
+	'orderby' => 'publish_date',
+	'category__not_in' => array($guide_cosmo->cat_ID, $guide_dg->cat_ID, $guide_tips->cat_ID, $guide_others->cat_ID),
+	'post__not_in' => array($post_spotlight)
+]);
+
 // Buscar os membros da equipe
 $context['team'] = get_users([
 	'numberposts' => 6,
@@ -142,7 +147,7 @@ function getPostsCharacter($query)
 			'character_slug' => $post->slug,
 			'character_description' => $data['character_description'],
 			'character_rarity' => $data['character_rarity'],
-			'character_thumb' => $data['character_thumb']['url'],
+			'character_thumb' => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID))[0],
 			'character_picture' => $data['character_img_spotlight']['url'],
 			'character_skills' => get_fields($data['character_skills']->ID),
 			'character_link' => get_the_permalink($post->ID),

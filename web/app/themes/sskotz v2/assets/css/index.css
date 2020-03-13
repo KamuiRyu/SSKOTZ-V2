@@ -147,28 +147,28 @@ main .parallex {
     position: relative;
 }
 
-.slider-characters .S-ranking {
+.slider-characters .r2-ranking {
     background: rgb(255, 242, 139);
     background: linear-gradient(90deg, rgba(255, 242, 139, 1) 0%, rgba(232, 186, 84, 1) 50%, rgba(255, 242, 139, 1) 100%);
     outline: none;
     border: none;
 }
 
-.slider-characters .A-ranking {
+.slider-characters .r3-ranking {
     background: rgb(211, 171, 251);
     background: linear-gradient(90deg, rgba(211, 171, 251, 1) 0%, rgba(168, 116, 237, 1) 50%, rgba(211, 171, 251, 1) 100%);
     outline: none;
     border: none;
 }
 
-.slider-characters .B-ranking {
+.slider-characters .r4-ranking {
     background: rgb(151, 235, 254);
     background: linear-gradient(90deg, rgba(151, 235, 254, 1) 0%, rgba(122, 171, 235, 1) 50%, rgba(151, 235, 254, 1) 100%);
     outline: none;
     border: none;
 }
 
-.slider-characters .SS-ranking {
+.slider-characters .r1-ranking {
     background: rgb(255, 182, 123);
     background: linear-gradient(90deg, rgba(255, 182, 123, 1) 0%, rgba(255, 62, 55, 1) 50%, rgba(255, 182, 123, 1) 100%);
     outline: none;
@@ -247,10 +247,22 @@ main .parallex {
 
 .slider-characters .item-character {
     border-radius: 50%;
+    position: relative;
 }
 
 .slider-characters .item-character img {
     border-radius: 50%;
+}
+
+.slider-characters .item-character .saint-ranking{
+    height: 40px;
+    width: 37px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .guide-item {

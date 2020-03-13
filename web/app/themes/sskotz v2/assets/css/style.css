@@ -8,24 +8,20 @@
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap');
 :root {
     --primary-color: #f5b453;
-    --secondary-color: #502a80;
     --font-color: #595959;
-    --bg-color: #f5f5f5;
-    --navsub-color: #303030;
-    --navmain-color: #f5f5f5;
+    --bg-color: #f0f0f0;
+    --navsub-color: #2e2f33;
     --timesmall-color: #e4e4e4;
     --fontinverse-color: #c7c7c7;
 }
 
 [data-theme="dark"] {
     --primary-color: #eba53f;
-    --secondary-color: #502a80;
     --font-color: #e4e4e4;
-    --bg-color: #1a1a1a;
-    --navsub-color: #f5f5f5;
-    --navmain-color: #1a1a1a;
-    --timesmall-color: #303030;
-    --fontinverse-color: #595959;
+    --bg-color: #1a1b1f;
+    --navsub-color: #2e2f33;
+    --timesmall-color: #e4e4e4;
+    --fontinverse-color: #c7c7c7;
 }
 
 footer {
@@ -284,7 +280,7 @@ body {
 .nav-group .nav-main {
     transition: all 0.80s ease-in-out;
     height: 100px;
-    background-color: var(--navmain-color);
+    background-color: transparent;
 }
 
 .nav-group .nav-main .navbar-collapse li a {
