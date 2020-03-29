@@ -70,7 +70,7 @@
 						</div>
 					</div>
 					<div class="character-cosmos-status mb-4 pt-0 character-block">
-						<div class="ch-title mb-3">
+						<div class="ch-title">
 							<span>Cosmo subatributos</span>
 						</div>
 						<ul class="ch-cosmo-sub-list">
@@ -235,9 +235,11 @@
 							<li class="ch-link active" onclick="openTab(event, 'skills')">Habilidades
 								<i class="fas fa-chevron-right float-right"></i>
 							</li>
-							<li class="ch-link" onclick="openTab(event, 'comp')">Composições
-								<i class="fas fa-chevron-right float-right"></i>
-							</li>
+							{% if post.comps|length > 1 %}
+								<li class="ch-link" onclick="openTab(event, 'comp')">Composições
+									<i class="fas fa-chevron-right float-right"></i>
+								</li>
+							{% endif %}
 							{% if post.skills.skill_has_cr == 1 %}
 								<li class="ch-link" onclick="openTab(event, 'cloth-repair')">Cloth Repair
 									<i class="fas fa-chevron-right float-right"></i>
@@ -329,6 +331,438 @@
 								{% endif %}
 							{% endfor %}
 						</div>
+
+						{% if post.slug == 'poseidon' %}
+							<hr class="mt-5 mb-4">
+							<h3 class="mb-4">
+								Combinações de habilidades
+							</h3>
+							<div
+								class="ch-skills-poseidon">
+								<!-- WATER -->
+
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb1.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">0</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Maré - Poder</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Causa 150% de dano mágico no inimigo e causa um marca de "Onda" no alvo; (efeito permanente, pode ser removido)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb2.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">0</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Maré - Vórtice</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Invoca um "espirito redemoinho" que possui 60% da sua vida, após o turno de Poseidon, reduz em 30% a armadura física e mágica de um inimigo aleatoriamente, por 3 turnos. (Prioriza alvos com a marca de "Onda". Só é possível controlar 1 "espirito redemoinho" por vez. Se o espirito for eliminado, Poseidon recebe 160% de dano mágico)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb3.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">0</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Maré - Casco</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Invoca um "espirito concha" que possui 60% da sua vida, após o turno de Poseidon, marca aleatoriamente um inimigo, quando o alvo atacar e causar dano no turno dele, o espirito causará 270% de dano mágico nele. (Prioriza alvos com a marca de "Onda". Só é possível controlar 1 "espirito concha" por vez. Se o espirito for eliminado, Poseidon recebe 160% de dano mágico)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- ICE -->
+
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb4.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">0</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Cristal de Gelo - Poder</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Causa 150% de dano mágico no inimigo e causa um marca de "Cristal de Gelo" no alvo; (efeito permanente, pode ser removido)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb5.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">1</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Cristal de Gelo - Armadura</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Poseidon escolhe um aliado e o protege com uma armadura de gelo, quando o aliado receber um ataque, a armadura de gelo devolve o ataque recebido como dano real (ignora defesa), se o dano causado for maior que 35% da vida máxima de Poseidon, nada acontece. (Se o atacante possui uma marca de "Cristal de Gelo", tem a chance de 30% (+ chance de efeito) de causar 35% de dano real adicional, só é possível ter 2 armaduras de gelo ao mesmo tempo, armadura dura 2 turnos)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb6.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">1</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Cristal de Gelo - Semente</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Poseidon escolhe um aliado e marca uma "semente de gelo", quando o aliado receber um ataque, a "semente de gelo" contra ataca causando 260% de dano mágico (Se o atacante possui uma marca de "Cristal de Gelo", tem a chance de 85% (+ chance de efeito) de reduzir em 25% a velocidade do inimigo, só é possível ter 2 sementes de gelo ao mesmo tempo, a semente dura 2 turnos)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- THUNDER -->
+
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb7.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">0</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Nuvem Estrondosa - Poder</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Causa 150% de dano mágico no inimigo e causa um marca de "Trovão" no alvo; (efeito permanente, pode ser removido)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb8.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">2</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Nuvem Estrondosa - Relâmpago</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Causa 260% de dano mágico em um inimigo. Tem a chance de 30% (+ chance de efeito) de um novo ataque que causa 160% de dano mágico em um inimigo aleatório (Se você possuir mais membros na sua equipe, a chance de ataque adicionais é maior. Até no máximo de 5 ataques adicionais. Prioriza alvos que possuam a marca de "Trovão". Se o inimigo for atingido pelo raio mais de uma vez, reduz o dano em 30% pra cada ataque adicional).</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb9.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">2</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Nuvem Estrondosa - Tempestade de gelo</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Ataca um inimigo 3 vezes, cada ataque causa 80% de dano mágico, e tem a chance de 25% (+ acerto de efeito) de congelar um inimigo. (Se o alvo possuir a marca do "Trovão", cada ataque causa 50% a mais de dano)</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- TSUNAMI -->
+
+								<div class="ch-skill-poseidon">
+									<div class="row w-100 m-auto">
+										<div class="ch-skill-details w-100">
+											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+												<div class="ch-skill-img-block">
+													<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidoncomb10.png" class="ch-skill-img">
+													<div class="ch-skill-cost">
+														<span class="text-white font-stroke text-center">0</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+												<div class="ch-skill-more-block">
+													<div class="ch-skill-name">
+														<h5>Tsunami</h5>
+													</div>
+													<div class="ch-skill-comb mt-4">
+														<ul class="ch-skill-comb-list">
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon1.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon2.png">
+															</li>
+															<li>
+																<img src="{{ site.link }}/app/uploads/2020/03/skill_poseidon3.png">
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="ch-skill-up">
+												<p>Causa 230% de dano mágico em todos inimigos, o alvo selecionado recebe as marcas de "Onda","Cristal de Gelo" e "Trovão", e Poseidon compartilha todos os stacks que possui, dos poderes acumulados, com todos os membros da equipe.
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
 					</div>
 					<div id="comp" class="tabcontent">
 						<h3 class="mb-4">
@@ -479,6 +913,13 @@ tablinks[i].className = tablinks[i].className.replace(" active", "");
 
 document.getElementById(tabName).style.display = "block";
 evt.currentTarget.className += " active";
+
+var id = $("#" + tabName),
+targetOffset = $(id).offset().top;
+
+$('html, body').animate({
+scrollTop: targetOffset - 100
+}, 500);
 }
 	</script>
 {% endblock %}

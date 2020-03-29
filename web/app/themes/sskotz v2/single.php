@@ -69,6 +69,7 @@ function getUserRolesAsText($user)
 
 function getPostCharacter($query)
 {
+    $slug = $query->post_name;
     $post = get_fields($query);
     $legendary = [];
     $solar = [];
@@ -88,29 +89,35 @@ function getPostCharacter($query)
         'character_sub' => $post['character_cosmo_sub'],
         'character_thumb' => wp_get_attachment_image_src(
             get_post_thumbnail_id($query->ID)
-        )[0]
+        )[0],
+        'slug' => $slug
     ];
 
-    if (isset($post['character_comp'])) {
+    if (!empty($post['character_comp'])) {
         for ($i = 1; $i <= count($post['character_comp']); $i++) {
-            for ($a = 0; $a < count($post['character_comp'][$i]); $a++) {
-                $character_comp['name'] = get_field(
-                    'character_name_comp',
-                    $post['character_comp'][$i][$a]->ID
-                );
-                $character_comp['img'] = wp_get_attachment_image_src(
-                    get_post_thumbnail_id($post['character_comp'][$i][$a]->ID)
-                )[0];
-                $character_comp['rarity'] = get_field(
-                    'character_rarity',
-                    $post['character_comp'][$i][$a]->ID
-                );
-                $character_comp['link'] = get_permalink(
-                    $post['character_comp'][$i][$a]->ID
-                );
-                $comps['comp_' . $i][$a] = array_merge($character_comp);
+            if (!empty($post['character_comp'][$i])) {
+                for ($a = 0; $a < count($post['character_comp'][$i]); $a++) {
+                    $character_comp['name'] = get_field(
+                        'character_name_comp',
+                        $post['character_comp'][$i][$a]->ID
+                    );
+                    $character_comp['img'] = wp_get_attachment_image_src(
+                        get_post_thumbnail_id(
+                            $post['character_comp'][$i][$a]->ID
+                        )
+                    )[0];
+                    $character_comp['rarity'] = get_field(
+                        'character_rarity',
+                        $post['character_comp'][$i][$a]->ID
+                    );
+                    $character_comp['link'] = get_permalink(
+                        $post['character_comp'][$i][$a]->ID
+                    );
+                    $comps['comp_' . $i][$a] = array_merge($character_comp);
+                }
             }
         }
+        $character['comps'] = array_merge($comps);
     }
     $count = 0;
     foreach ($post['character_cosmo_legendary'] as $cosmo) {
@@ -164,7 +171,6 @@ function getPostCharacter($query)
     unset($skills['skill_cr_number']);
     $character['cosmos'] = array_merge($cosmos);
     $character['skills'] = array_merge($skills);
-    $character['comps'] = array_merge($comps);
 
     return $character;
 }
@@ -184,6 +190,7 @@ function getPostCosmo($query)
         'cosmo_bonus' => $data['cosmo_bonus'],
         'cosmo_qntstatus' => $data['cosmo_qntstatus'],
         'cosmo_img' => $data['cosmo_img']['url'],
+        'cosmo_subs' => $data['cosmo_subs'],
         'cosmo_type' => get_the_terms($query->ID, 'cosmo_type')[0]->slug,
         'cosmo_link' => get_permalink($query->ID)
     ];
@@ -193,23 +200,23 @@ function getPostCosmo($query)
         if ($lc == 'Altar') {
             if (!empty($data['cosmo_drop']['days_altar'])) {
                 $drop_days = $data['cosmo_drop']['days_altar'];
-                $days = '( ';
+                $days = ' (';
                 foreach ($drop_days as $day) {
                     $days = $days . $day . ', ';
                 }
                 $days = rtrim($days, ', ');
-                $days .= ' )';
+                $days .= ')';
                 $location = $location . $lc . $days . ', ';
             }
         } elseif ($lc == 'Titãs') {
             if (!empty($data['cosmo_drop']['days_titan'])) {
                 $drop_days = $data['cosmo_drop']['days_titan'];
-                $days = '( ';
+                $days = ' (';
                 foreach ($drop_days as $day) {
                     $days = $days . $day . ', ';
                 }
                 $days = rtrim($days, ', ');
-                $days .= ' )';
+                $days .= ')';
                 $location = $location . $lc . $days . ', ';
             }
         } else {
@@ -220,10 +227,15 @@ function getPostCosmo($query)
     $cosmo['cosmo_drop_location'] = $location;
     $cosmo['cosmo_status1_tipo'] = $data['cosmo_status1']['tipo'];
     $cosmo['cosmo_status1_max'] = $data['cosmo_status1']['max'];
+    $cosmo['cosmo_status1_s_tipo'] = $data['cosmo_status1_s']['tipo'];
+    $cosmo['cosmo_status1_s_max'] = $data['cosmo_status1_s']['max'];
     if ($data['cosmo_qntstatus'] > 1) {
         $cosmo['cosmo_status2_tipo'] = $data['cosmo_status2']['tipo'];
         $cosmo['cosmo_status2_max'] = $data['cosmo_status2']['max'];
+        $cosmo['cosmo_status2_s_tipo'] = $data['cosmo_status2_s']['tipo'];
+        $cosmo['cosmo_status2_s_max'] = $data['cosmo_status2_s']['max'];
     }
+
     return $cosmo;
 }
 

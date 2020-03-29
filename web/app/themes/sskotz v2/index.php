@@ -13,65 +13,75 @@
  * @since   Timber 0.1
  */
 
-$context          = Timber::context();
+$context = Timber::context();
 define('ROLE_MAP', [
-	'administrator' => 'Administrador',
-	'author' => 'Autor',
-	'contributor' => 'Contribuidor',
-	'editor' => 'Editor',
-	'subscriber' => 'Assinante',
-	'design' => 'Designer',
-	'developer' => 'Desenvolvedor',
-	'publisher' => 'Publicador',
-	'streamer' => 'Streamer'
+    'administrator' => 'Administrador',
+    'author' => 'Autor',
+    'contributor' => 'Contribuidor',
+    'editor' => 'Editor',
+    'subscriber' => 'Assinante',
+    'design' => 'Designer',
+    'developer' => 'Desenvolvedor',
+    'publisher' => 'Publicador',
+    'streamer' => 'Streamer'
 ]);
 
-$guide_cosmo =  get_category_by_slug('cosmos');
-$guide_dg =  get_category_by_slug('dungeons');
-$guide_tips =  get_category_by_slug('tips');
-$guide_others =  get_category_by_slug('others');
+$guide_cosmo = get_category_by_slug('cosmos');
+$guide_dg = get_category_by_slug('dungeons');
+$guide_tips = get_category_by_slug('tips');
+$guide_others = get_category_by_slug('others');
 
 // Buscar postagens para aba de ultimos personagens lançados
 $context['character'] = Timber::get_posts([
-	'post_type' => 'characters',
-	'post_satus' => 'publish',
-	'numberposts' => 10,
-	'orderby' => 'modified',
-	'meta_query' => array(
+    'post_type' => 'characters',
+    'post_satus' => 'publish',
+    'numberposts' => 10,
+    'orderby' => 'modified',
+    'meta_query' => array(
         array(
             'key' => 'character_spotlight',
             'value' => 'yes',
             'compare' => 'LIKE'
-		)
-	)
+        )
+    )
 ]);
 
 // Buscar a novidade destaque mais recente
 $context['spotlight'] = Timber::get_posts([
-	'post_type' => 'post',
-	'post_satus' => 'publish',
-	'numberposts' => 1,
-	'orderby' => 'publish_date',
-	'category__not_in' => array($guide_cosmo->cat_ID, $guide_dg->cat_ID, $guide_tips->cat_ID, $guide_others->cat_ID),
-	'category_name' => 'spotlight'
+    'post_type' => 'post',
+    'post_satus' => 'publish',
+    'numberposts' => 1,
+    'orderby' => 'publish_date',
+    'category__not_in' => array(
+        $guide_cosmo->cat_ID,
+        $guide_dg->cat_ID,
+        $guide_tips->cat_ID,
+        $guide_others->cat_ID
+    ),
+    'category_name' => 'spotlight'
 ]);
 
-$post_spotlight =  $context['spotlight'][0]->ID;
+$post_spotlight = $context['spotlight'][0]->ID;
 
 // Buscar todas as novidades recentes
 $context['public'] = Timber::get_posts([
-	'post_type' => 'post',
-	'post_satus' => 'publish',
-	'numberposts' => 4,
-	'orderby' => 'publish_date',
-	'category__not_in' => array($guide_cosmo->cat_ID, $guide_dg->cat_ID, $guide_tips->cat_ID, $guide_others->cat_ID),
-	'post__not_in' => array($post_spotlight)
+    'post_type' => 'post',
+    'post_satus' => 'publish',
+    'numberposts' => 4,
+    'orderby' => 'publish_date',
+    'category__not_in' => array(
+        $guide_cosmo->cat_ID,
+        $guide_dg->cat_ID,
+        $guide_tips->cat_ID,
+        $guide_others->cat_ID
+    ),
+    'post__not_in' => array($post_spotlight)
 ]);
 
 // Buscar os membros da equipe
 $context['team'] = get_users([
-	'numberposts' => 6,
-	'orderby' => 'rand',
+    'numberposts' => 6,
+    'orderby' => 'rand'
 ]);
 
 /**
@@ -87,30 +97,30 @@ die;*/
 
 function getUserInfo($person)
 {
-	$user = [];
-	foreach (['discord', 'twitter', 'facebook', 'instagram'] as $socialMedia) {
-		$media = get_user_meta($person->ID, $socialMedia);
-		if (isset($media[0]) && !empty($media[0])) {
-			$user[$socialMedia] = $media[0];
-		}
-	}
+    $user = [];
+    foreach (['discord', 'twitter', 'facebook', 'instagram'] as $socialMedia) {
+        $media = get_user_meta($person->ID, $socialMedia);
+        if (isset($media[0]) && !empty($media[0])) {
+            $user[$socialMedia] = $media[0];
+        }
+    }
 
-	$live = get_user_meta($person->ID, 'live');
+    $live = get_user_meta($person->ID, 'live');
 
-	if (isset($live[0]) && !empty($live[0])) {
-		$user['live'] = $live[0];
-		if (strpos($live[0], 'twitch') != '') {
-			$user['plataform_live'] = 'twitch';
-		} else if (strpos($live[0], 'youtube') != '') {
-			$user['plataform_live'] = 'youtube';
-		} else if (strpos($live[0], 'facebook') != '') {
-			$user['plataform_live'] = 'facebook';
-		} else {
-			$user['plataform_live'] = 'other';
-		}
-	}
+    if (isset($live[0]) && !empty($live[0])) {
+        $user['live'] = $live[0];
+        if (strpos($live[0], 'twitch') != '') {
+            $user['plataform_live'] = 'twitch';
+        } elseif (strpos($live[0], 'youtube') != '') {
+            $user['plataform_live'] = 'youtube';
+        } elseif (strpos($live[0], 'facebook') != '') {
+            $user['plataform_live'] = 'facebook';
+        } else {
+            $user['plataform_live'] = 'other';
+        }
+    }
 
-	return $user;
+    return $user;
 }
 
 /**
@@ -122,12 +132,12 @@ function getUserInfo($person)
 
 function getUserRolesAsText($user)
 {
-	$roles = [];
-	foreach ($user->roles as $role) {
-		$roles[] = ROLE_MAP[$role];
-	}
+    $roles = [];
+    foreach ($user->roles as $role) {
+        $roles[] = ROLE_MAP[$role];
+    }
 
-	return implode(", ", $roles);
+    return implode(', ', $roles);
 }
 
 /**
@@ -139,22 +149,29 @@ function getUserRolesAsText($user)
 
 function getPostsCharacter($query)
 {
-	$characters = [];
-	foreach ($query as $post) {
-		$data = get_fields($post->ID);
-		$saint = [
-			'character_name' => $post->character_name,
-			'character_slug' => $post->slug,
-			'character_description' => $data['character_description'],
-			'character_rarity' => $data['character_rarity'],
-			'character_thumb' => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID))[0],
-			'character_picture' => $data['character_img_spotlight']['url'],
-			'character_skills' => get_fields($data['character_skills']->ID),
-			'character_link' => get_the_permalink($post->ID),
-		];
-		$characters[] = array_merge($saint);
-	}
-	return $characters;
+    $characters = [];
+    foreach ($query as $post) {
+        $data = get_fields($post->ID);
+        $skills = get_fields($data['character_skills']->ID);
+        unset($skills['skill_qnt']);
+        unset($skills['skill_has_cr']);
+        unset($skills['skill_cr']);
+        unset($skills['skill_cr_number']);
+        $saint = [
+            'character_name' => $post->character_name,
+            'character_slug' => $post->slug,
+            'character_description' => $data['character_description'],
+            'character_rarity' => $data['character_rarity'],
+            'character_thumb' => wp_get_attachment_image_src(
+                get_post_thumbnail_id($post->ID)
+            )[0],
+            'character_picture' => $data['character_img_spotlight']['url'],
+            'character_link' => get_the_permalink($post->ID)
+        ];
+        $saint['character_skills'] = array_merge($skills);
+        $characters[] = array_merge($saint);
+    }
+    return $characters;
 }
 
 /**
@@ -166,40 +183,51 @@ function getPostsCharacter($query)
 
 function getPostsSpotlight($query)
 {
-	$spotlights = [];
-	foreach ($query as $post) {
-		$data = get_fields($post->ID);
-		$spotlight = [
-			'post_title' => $post->post_title,
-			'post_img' => $data["post_thumb"]['url'],
-			'post_author_name' => get_the_author_meta('display_name', $post->post_author),
-			'post_author_avatar' => get_avatar_url($post->post_author),
-			'post_author_link' => get_author_posts_url($post->post_author),
-			'post_tag' => get_the_category($post->ID),
-			'post_desc' => mb_strimwidth($data["post_desc"], 0, 100, "..."),
-			'post_date' => date("d/m/Y H:i:s", strtotime($post->post_date_gmt)),
-		];
-		$categories = get_the_category($post->ID);
-		$server_protocol = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false) ? 'http' : 'https';
-		$key = $server_protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-		if(array_search('news', array_column($categories, 'slug')) > 0){
-			$key .= 'news';
-		}else if(array_search('guides', array_column($categories, 'slug')) > 0){
-			$key .= 'guides';
-		}
-		foreach($categories as $category){
-			if($category->slug != 'news'){
-				if($category->slug != 'guides'){
-					if($category->slug != 'spotlight'){
-						$key .= '/'.$category->slug;
-					}
-				}
-			}
-		}
-		$spotlight['post_link'] = $key.'/'.$post->post_name;
-		$spotlights[] = array_merge($spotlight);
-	}
-	return $spotlights;
+    $spotlights = [];
+    foreach ($query as $post) {
+        $data = get_fields($post->ID);
+        $spotlight = [
+            'post_title' => $post->post_title,
+            'post_img' => $data['post_thumb']['url'],
+            'post_author_name' => get_the_author_meta(
+                'display_name',
+                $post->post_author
+            ),
+            'post_author_avatar' => get_avatar_url($post->post_author),
+            'post_author_link' => get_author_posts_url($post->post_author),
+            'post_tag' => get_the_category($post->ID),
+            'post_date' => date('d/m/Y H:i:s', strtotime($post->post_date_gmt))
+        ];
+        $categories = get_the_category($post->ID);
+        $server_protocol =
+            strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false
+                ? 'http'
+                : 'https';
+        $key =
+            $server_protocol .
+            '://' .
+            $_SERVER['HTTP_HOST'] .
+            $_SERVER['REQUEST_URI'];
+        if (array_search('news', array_column($categories, 'slug')) > 0) {
+            $key .= 'news';
+        } elseif (
+            array_search('guides', array_column($categories, 'slug')) > 0
+        ) {
+            $key .= 'guides';
+        }
+        foreach ($categories as $category) {
+            if ($category->slug != 'news') {
+                if ($category->slug != 'guides') {
+                    if ($category->slug != 'spotlight') {
+                        $key .= '/' . $category->slug;
+                    }
+                }
+            }
+        }
+        $spotlight['post_link'] = $key . '/' . $post->post_name;
+        $spotlights[] = array_merge($spotlight);
+    }
+    return $spotlights;
 }
 
 /**
@@ -211,40 +239,51 @@ function getPostsSpotlight($query)
 
 function getPostsNews($query)
 {
-	$publics = [];
-	foreach ($query as $post) {
-		$data = get_fields($post->ID);
-		$public = [
-			'post_title' => $post->post_title,
-			'post_img' => $data["post_thumb"]['url'],
-			'post_author_name' => get_the_author_meta('display_name', $post->post_author),
-			'post_author_avatar' => get_avatar_url($post->post_author),
-			'post_author_link' => get_author_posts_url($post->post_author),
-			'post_tag' => get_the_category($post->ID),
-			'post_desc' => mb_strimwidth($data["post_desc"], 0, 100, "..."),
-			'post_date' => date("d/m/Y H:i:s", strtotime($post->post_date_gmt)),
-		];
-		$categories = get_the_category($post->ID);
-		$server_protocol = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false) ? 'http' : 'https';
-		$key = $server_protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-		if(array_search('news', array_column($categories, 'slug')) > 0){
-			$key .= 'news';
-		}else if(array_search('guides', array_column($categories, 'slug')) > 0){
-			$key .= 'guides';
-		}
-		foreach($categories as $category){
-			if($category->slug != 'news'){
-				if($category->slug != 'guides'){
-					if($category->slug != 'spotlight'){
-						$key .= '/'.$category->slug;
-					}
-				}
-			}
-		}
-		$public['post_link'] = $key.'/'.$post->post_name;
-		$publics[] = array_merge($public);
-	}
-	return $publics;
+    $publics = [];
+    foreach ($query as $post) {
+        $data = get_fields($post->ID);
+        $public = [
+            'post_title' => $post->post_title,
+            'post_img' => $data['post_thumb']['url'],
+            'post_author_name' => get_the_author_meta(
+                'display_name',
+                $post->post_author
+            ),
+            'post_author_avatar' => get_avatar_url($post->post_author),
+            'post_author_link' => get_author_posts_url($post->post_author),
+            'post_tag' => get_the_category($post->ID),
+            'post_date' => date('d/m/Y H:i:s', strtotime($post->post_date_gmt))
+        ];
+        $categories = get_the_category($post->ID);
+        $server_protocol =
+            strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false
+                ? 'http'
+                : 'https';
+        $key =
+            $server_protocol .
+            '://' .
+            $_SERVER['HTTP_HOST'] .
+            $_SERVER['REQUEST_URI'];
+        if (array_search('news', array_column($categories, 'slug')) > 0) {
+            $key .= 'news';
+        } elseif (
+            array_search('guides', array_column($categories, 'slug')) > 0
+        ) {
+            $key .= 'guides';
+        }
+        foreach ($categories as $category) {
+            if ($category->slug != 'news') {
+                if ($category->slug != 'guides') {
+                    if ($category->slug != 'spotlight') {
+                        $key .= '/' . $category->slug;
+                    }
+                }
+            }
+        }
+        $public['post_link'] = $key . '/' . $post->post_name;
+        $publics[] = array_merge($public);
+    }
+    return $publics;
 }
 
 /**
@@ -256,19 +295,19 @@ function getPostsNews($query)
 
 function getTeamMembers($users)
 {
-	$team = [];
-	foreach ($users as $user) {
-		$person = get_userdata($user->ID);
-		$user = [
-			'name' => $person->display_name,
-			'avatar' => get_avatar_url($person->ID),
-			'role' => getUserRolesAsText($person),
-		];
-		$extraInfo = getUserInfo($person);
+    $team = [];
+    foreach ($users as $user) {
+        $person = get_userdata($user->ID);
+        $user = [
+            'name' => $person->display_name,
+            'avatar' => get_avatar_url($person->ID),
+            'role' => getUserRolesAsText($person)
+        ];
+        $extraInfo = getUserInfo($person);
 
-		$team[] = array_merge($user, $extraInfo);
-	}
-	return $team;
+        $team[] = array_merge($user, $extraInfo);
+    }
+    return $team;
 }
 
 // Passando os arrays para dentro do context

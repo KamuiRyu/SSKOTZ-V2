@@ -1,0 +1,102 @@
+{% extends "base.twig" %}
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ site.theme.link }}//assets/css/archive.css" type="text/css" media="screen"/>
+{% endblock %}
+{% block content %}
+	<section class="pt-4 pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 mb-4 text-center">
+					<h2 class="text-uppercase">Guias</h2>
+					<p class="mb-0">Guias destinados para auxiliar você a melhorar sua conta em Saint Seiya Awakening.
+					</p>
+				</div>
+			</div>
+			<div class="row align-items-center justify-content-center mt-3">
+				<div class="col-12 mb-3">
+					<div class="nav-news m-auto justify-content-center d-flex">
+						<ul>
+							<li {% if categorypage.slug == 'guides' %} class="active
+															"{% endif %}>
+								<a href="{{ site.link }}/guides/">Todas os guias</a>
+							</li>
+							<li {% if categorypage.slug == 'cosmos' %} class="active
+															"{% endif %}>
+								<a href="{{ site.link }}/guides/cosmos">Cosmos</a>
+							</li>
+							<li {% if categorypage.slug == 'dungeons' %} class="active
+															"{% endif %}>
+								<a href="{{ site.link }}/guides/dungeons">Masmorras</a>
+							</li>
+							<li {% if categorypage.slug == 'tips' %} class="active
+															"{% endif %}>
+								<a href="{{ site.link }}/guides/tips">Dicas</a>
+							</li>
+							<li {% if categorypage.slug == 'others' %} class="active
+															"{% endif %}>
+								<a href="{{ site.link }}/guides/others">Outros</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center justify-content-center mt-3">
+				<ul class="post-list p-0 d-flex align-items-center justify-content-center m-auto">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 px-md-0 text-center justify-content-center">
+                        {% for post in posts %}
+							{% if post.current is not defined %}
+								<li class="post-card">
+									<a href="{{ post.post_link }}" alt="Link da postagem {{ post.title }}">
+										<img src="{{ post.post_img }}" alt=" {{ post.post_title }} ">
+										<div class="post-card-info">
+											{% for tag in post.post_tag %} {% if tag.slug != 'guides' and tag.slug != 'spotlight'%}
+											<span class="post-card-category {{ tag.slug }}-category">
+												
+												{{tag.name}}
+												
+											</span> {% endif %}{% endfor %}
+											<h5>{{ post.post_title }}</h5>
+										</div>
+									</a>
+								</li>
+							{% endif %}
+                        {% endfor %}
+                    </div>
+                </ul>
+			</div>
+		{% if posts.pagination.total > 1 %}
+				<div class="row justify-content-center">
+					<nav>
+						<div class="pagination-container wow zoomIn mar-b-1x" data-wow-duration="0.5s">
+							<ul class="pagination">
+								{% if posts.pagination.prev %}
+									<li class="pagination-item--wide first m-auto">
+										<a class="pagination-link--wide first" href="{{posts.pagination.prev.link}}">
+											<i class="fas fa-chevron-left"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% for page in posts.pagination.pages %}
+									<li class="pagination-item {% if page.title == 1 %}first-number{% endif %}{% if page.current == 1 %} is-active{% endif %}">
+										<a class="pagination-link" href="{{page.link}}">{{page.title}}</a>
+									</li>
+								{% endfor %}
+								{% if posts.pagination.next %}
+									<li class="pagination-item--wide last m-auto">
+										<a class="pagination-link--wide last" href="{{posts.pagination.next.link}}">
+											<i class="fas fa-chevron-right"></i>
+										</a>
+									</li>
+								{% endif %}
+							</ul>
+						</div>
+					</nav>
+				</div>
+			{% endif %}
+		</div>
+	</section>
+{% endblock %}
+{% block script %}
+	{{ parent() }}
+{% endblock %}

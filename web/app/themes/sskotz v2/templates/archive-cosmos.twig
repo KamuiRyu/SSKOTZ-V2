@@ -96,7 +96,31 @@
 									</div>
 									<div class="row">
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											<span>{{cosmo.cosmo_bonus}}</span>
+											{% if cosmo.cosmo_type == 'legendary' %}
+												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
+											{% else %}
+												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
+												<span style="vertical-align: middle;">
+													{% if cosmo.cosmo_bonus == 'atqf' %}
+														Ataque físico +10%
+													{% elseif cosmo.cosmo_bonus == 'atqc' %}
+														Ataque cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
+														Dano cósmico +5%
+													{% elseif cosmo.cosmo_bonus == 'speed' %}
+														Velocidade +20
+													{% elseif cosmo.cosmo_bonus == 'pv' %}
+														PV +10%
+													{% elseif cosmo.cosmo_bonus == 'rsc' %}
+														Resistência á dano cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'rs' %}
+														Resistência a status +15%
+													{% elseif cosmo.cosmo_bonus == 'pf' %}
+														Perfuração física +100
+													{% endif %}
+												</span>
+												
+											{% endif %}
 										</div>
 									</div>
 								</div>
@@ -156,7 +180,31 @@
 									</div>
 									<div class="row">
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											<span>{{cosmo.cosmo_bonus}}</span>
+											{% if cosmo.cosmo_type == 'legendary' %}
+												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
+											{% else %}
+												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
+												<span style="vertical-align: middle;">
+													{% if cosmo.cosmo_bonus == 'atqf' %}
+														Ataque físico +10%
+													{% elseif cosmo.cosmo_bonus == 'atqc' %}
+														Ataque cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
+														Dano cósmico +5%
+													{% elseif cosmo.cosmo_bonus == 'speed' %}
+														Velocidade +20
+													{% elseif cosmo.cosmo_bonus == 'pv' %}
+														PV +10%
+													{% elseif cosmo.cosmo_bonus == 'rsc' %}
+														Resistência á dano cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'rs' %}
+														Resistência a status +15%
+													{% elseif cosmo.cosmo_bonus == 'pf' %}
+														Perfuração física +100
+													{% endif %}
+												</span>
+												
+											{% endif %}
 										</div>
 									</div>
 								</div>
@@ -216,7 +264,31 @@
 									</div>
 									<div class="row">
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											<span>{{cosmo.cosmo_bonus}}</span>
+											{% if cosmo.cosmo_type == 'legendary' %}
+												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
+											{% else %}
+												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
+												<span style="vertical-align: middle;">
+													{% if cosmo.cosmo_bonus == 'atqf' %}
+														Ataque físico +10%
+													{% elseif cosmo.cosmo_bonus == 'atqc' %}
+														Ataque cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
+														Dano cósmico +5%
+													{% elseif cosmo.cosmo_bonus == 'speed' %}
+														Velocidade +20
+													{% elseif cosmo.cosmo_bonus == 'pv' %}
+														PV +10%
+													{% elseif cosmo.cosmo_bonus == 'rsc' %}
+														Resistência á dano cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'rs' %}
+														Resistência a status +15%
+													{% elseif cosmo.cosmo_bonus == 'pf' %}
+														Perfuração física +100
+													{% endif %}
+												</span>
+												
+											{% endif %}
 										</div>
 									</div>
 								</div>
@@ -276,7 +348,31 @@
 									</div>
 									<div class="row">
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											<span>{{cosmo.cosmo_bonus}}</span>
+											{% if cosmo.cosmo_type == 'legendary' %}
+												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
+											{% else %}
+												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
+												<span style="vertical-align: middle;">
+													{% if cosmo.cosmo_bonus == 'atqf' %}
+														Ataque físico +10%
+													{% elseif cosmo.cosmo_bonus == 'atqc' %}
+														Ataque cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
+														Dano cósmico +5%
+													{% elseif cosmo.cosmo_bonus == 'speed' %}
+														Velocidade +20
+													{% elseif cosmo.cosmo_bonus == 'pv' %}
+														PV +10%
+													{% elseif cosmo.cosmo_bonus == 'rsc' %}
+														Resistência á dano cósmico +10%
+													{% elseif cosmo.cosmo_bonus == 'rs' %}
+														Resistência a status +15%
+													{% elseif cosmo.cosmo_bonus == 'pf' %}
+														Perfuração física +100
+													{% endif %}
+												</span>
+												
+											{% endif %}
 										</div>
 									</div>
 								</div>

@@ -37,7 +37,7 @@
   padding: 0.2rem 0;
 }
 
-.character-block.character-block .ch-title span {
+.character-block .ch-title span {
   text-transform: uppercase;
   font-weight: 600;
   color: var(--font-character-color);
@@ -448,9 +448,7 @@
 }
 
 .character-block .ch-comps .ch-comp .ch-comp-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: inline-block;
   -ms-flex-wrap: wrap-reverse;
   flex-wrap: wrap-reverse;
   margin: 0;
@@ -576,10 +574,156 @@
   .ch-cosmo-sub-list
   .ch-cosmo-sub-item
   span {
-    font-size: 18px;
-    vertical-align: middle;
-    color: var(--font-character-color);
+  font-size: 18px;
+  vertical-align: middle;
+  color: var(--font-character-color);
 }
+
+.character-block .ch-skills-poseidon .ch-skill-poseidon {
+  background: var(--bg-character2-color);
+  position: relative;
+  margin-bottom: 3rem !important;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.character-block .ch-skills-poseidon .ch-skill-poseidon:last-child {
+  margin-bottom: 0 !important;
+}
+
+.character-block .ch-skills-poseidon .ch-skill-poseidon .ch-skill-details {
+  background: url('/app/themes/sskotz v2/assets/images/skill-bg.png');
+  background-repeat: no-repeat;
+  min-height: 110px;
+  position: relative;
+  display: flex;
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-details
+  .ch-skill-img-block {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-details
+  .ch-skill-img-block
+  img {
+  width: 80px;
+  background-color: #fff;
+  border: 3px solid #dee2e6;
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-details
+  .ch-skill-img-block
+  .ch-skill-cost {
+  background: url('/app/themes/sskotz v2/assets/images/cost_icon.png');
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-details
+  .ch-skill-img-block
+  .ch-skill-cost
+  span {
+  line-height: 25px;
+  font-size: 15px;
+  width: 10px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.character-block .ch-skills-poseidon .ch-skill-poseidon .ch-skill-more-block {
+  position: relative;
+  padding: 0.4rem 0;
+  margin-left: 25px;
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-more-block
+  .ch-skill-name
+  h4 {
+  color: var(--font-character-color);
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-more-block
+  .ch-skill-comb-list {
+  display: inline-block;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-more-block
+  .ch-skill-comb-list
+  li {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  margin: 0;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.character-block
+  .ch-skills-poseidon
+  .ch-skill-poseidon
+  .ch-skill-more-block
+  .ch-skill-comb-list
+  li
+  img {
+  width: 30px;
+  background-color: #fff;
+  border: 3px solid #dee2e6;
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+
+.character-block .ch-skills-poseidon .ch-skill-poseidon .ch-skill-up {
+  padding: 1rem;
+}
+
+.character-block .ch-skills-poseidon .ch-skill-poseidon .ch-skill-up ol li,
+.character-block .ch-skills-poseidon .ch-skill-poseidon .ch-skill-up p {
+  color: var(--font-character-color);
+  font-size: 1.1em;
 }
 
 @media only screen and (max-width: 600px) {

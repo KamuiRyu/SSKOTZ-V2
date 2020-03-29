@@ -1,0 +1,538 @@
+{% extends "base.twig" %}
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ site.theme.link }}/assets/css/single-cosmos.css" type="text/css" media="screen"/>
+{% endblock %}
+
+{% block content %}
+	<section>
+		<div class="container my-lg-5 my-3">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+					<div class="cosmo-info mb-4 pt-0 cosmo-block">
+						<div class="ch-title mb-3">
+							<span>Informações</span>
+						</div>
+						<div class="text-center">
+							<div class="cosmo-img cosmo-{{ post.cosmo_type }} mb-1">
+								<img src="{{ post.cosmo_img }}"/>
+							</div>
+							<h4>{{ post.cosmo_name }}</h4>
+							<div class="cosmo-atributes">
+								<hr>
+								<ul class="ch-cosmo-links">
+									<li class="ch-cosmo-link active" onclick="openTab(event, 'ss-atributes')">SS
+									</li>
+									<li class="ch-cosmo-link" onclick="openTab(event, 's-atributes')">S
+									</li>
+								</ul>
+								<div id="ss-atributes" class="tabcontent active">
+									<div class="ch-status">
+										<img src="{{ site.theme.link }}/assets/images/{{ post.cosmo_status1_tipo }}_icon.png">
+										<span>{{ post.cosmo_status1_max }}</span>
+									</div>
+									{% if post.cosmo_status2_tipo != "" %}
+										<div class="ch-status">
+											<img src="{{ site.theme.link }}/assets/images/{{ post.cosmo_status2_tipo }}_icon.png">
+											<span>{{ post.cosmo_status2_max }}</span>
+										</div>
+									{% endif %}
+								</div>
+
+								<div id="s-atributes" class="tabcontent">
+									<div class="ch-status">
+										<img src="{{ site.theme.link }}/assets/images/{{ post.cosmo_status1_s_tipo }}_icon.png">
+										<span>{{ post.cosmo_status1_s_max }}</span>
+									</div>
+									{% if post.cosmo_status2_s_tipo != "" %}
+										<div class="ch-status">
+											<img src="{{ site.theme.link }}/assets/images/{{ post.cosmo_status2_s_tipo }}_icon.png">
+											<span>{{ post.cosmo_status2_s_max }}</span>
+										</div>
+									{% endif %}
+								</div>
+
+							</div>
+							<hr>
+							<div class="cosmo-bonus">
+								{% if post.cosmo_type == 'legendary' %}
+									<span style="vertical-align: middle;">{{post.cosmo_bonus}}</span>
+								{% else %}
+									<img src="{{ site.theme.link }}/assets/images/{{ post.cosmo_bonus }}_icon.png">
+									<span style="vertical-align: middle;">
+										{% if post.cosmo_bonus == 'atqf' %}
+											Ataque físico +10%
+										{% elseif post.cosmo_bonus == 'atqc' %}
+											Ataque cósmico +10%
+										{% elseif post.cosmo_bonus == 'dmgc' %}
+											Dano cósmico +5%
+										{% elseif post.cosmo_bonus == 'speed' %}
+											Velocidade +20
+										{% elseif post.cosmo_bonus == 'pv' %}
+											PV +10%
+										{% elseif post.cosmo_bonus == 'rsc' %}
+											Resistência á dano cósmico +10%
+										{% elseif post.cosmo_bonus == 'rs' %}
+											Resistência a status +15%
+										{% elseif post.cosmo_bonus == 'pf' %}
+											Perfuração física +100
+										{% endif %}
+									</span>
+								{% endif %}
+							</div>
+
+						</div>
+					</div>
+					<div class="cosmo-drop mb-4 pt-0 cosmo-block">
+						<div class="ch-title">
+							<span>Onde obter</span>
+						</div>
+						<div class="text-center">
+							<span>Pode ser obtido através de:
+								<b>{{ post.cosmo_drop_location }}.</b>
+							</span>
+						</div>
+					</div>
+					<div class="cosmo-recommend pt-0 cosmo-block">
+						<div class="ch-title">
+							<span>Subatributos recomendados</span>
+						</div>
+						<ul class="ch-cosmo-sub-list">
+							{% for sub in post.cosmo_subs %}
+								<li class="ch-cosmo-sub-item">
+									<img src="{{ site.theme.link }}/assets/images/{{sub}}_icon.png">
+									{% if sub == 'atqf' %}
+										<span>Ataque físico</span>
+									{% elseif sub == 'atqc' %}
+										<span>Ataque cósmico</span>
+									{% elseif sub == 'dmgc' %}
+										<span>Dano cósmico</span>
+									{% elseif sub == 'nc' %}
+										<span>Nível Crit. F</span>
+									{% elseif sub == 'pv' %}
+										<span>PV</span>
+									{% elseif sub == 'deff' %}
+										<span>Defesa física</span>
+									{% elseif sub == 'defc' %}
+										<span>Defesa cósmica</span>
+									{% elseif sub == 'rs' %}
+										<span>Resistência á status</span>
+									{% elseif sub == 'as' %}
+										<span>Acerto de status</span>
+									{% elseif sub == 'speed' %}
+										<span>Velocidade</span>
+									{% elseif sub == 'ls' %}
+										<span>Roubo de vida</span>
+									{% elseif sub == 'cura' %}
+										<span>Cura</span>
+									{% endif %}
+								</li>
+
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-4 mt-lg-0 cosmo-block ch-tabcontents">
+					<div class="tab-content">
+						<h3 class="mb-4">
+							Subatributos possíveis
+						</h3>
+						<div class="col-12 px-lg-0 cosmo-table cosmo-sub-table">
+							<div class="col-12 cosmo-table-header">
+								<div class="col-8">
+									<span>ATRIBUTO</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>SS</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>S</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<img src="{{ site.theme.link }}/assets/images/atqf_icon.png" width="40"><span>Ataque Físico</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>55</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>50</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/atqf_icon.png" width="40">Ataque Físico %
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>3,04%</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>2,73%</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/atqc_icon.png" width="40">Ataque Cósmico
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>55</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>50</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/atqc_icon.png" width="40">Ataque Cósmico %
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>3,04%</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>2,73%</span>
+								</div>
+							</div>
+							{% if post.cosmo_type != 'lunar' %}
+								<div class="col-12 cosmo-table-sub">
+									<div class="col-8">
+										<span>
+											<img src="{{ site.theme.link }}/assets/images/dmgc_icon.png" width="40">Dano Cósmico %
+										</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>1,20%</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>1,08%</span>
+									</div>
+								</div>
+								<div class="col-12 cosmo-table-sub">
+									<div class="col-8">
+										<span>
+											<img src="{{ site.theme.link }}/assets/images/nc_icon.png" width="40">Nível Crit. F
+										</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>57</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>51</span>
+									</div>
+								</div>
+							{% endif %}
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/pv_icon.png" width="40">PV
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>340</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>306</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/pv_icon.png" width="40">PV %
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>3,04%</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>2,73%</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/deff_icon.png" width="40">Defesa Física
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>20</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>18</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/deff_icon.png" width="40">Defesa Física %
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>3%</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>2,73%</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/defc_icon.png" width="40">Defesa Cósmica
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>20</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>18</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/defc_icon.png" width="40">Defesa Cósmica %
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>3%</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>2,73%</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-8">
+									<span>
+										<img src="{{ site.theme.link }}/assets/images/rs_icon.png" width="40">Resistência á status
+									</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>4,40%</span>
+								</div>
+								<div class="col-2 my-auto">
+									<span>3,96%</span>
+								</div>
+							</div>
+							{% if post.cosmo_type != 'star' %}
+								<div class="col-12 cosmo-table-sub">
+									<div class="col-8">
+										<span>
+											<img src="{{ site.theme.link }}/assets/images/as_icon.png" width="40">Acerto de status
+										</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>4,40%</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>3,96%</span>
+									</div>
+								</div>
+								<div class="col-12 cosmo-table-sub">
+									<div class="col-8">
+										<span>
+											<img src="{{ site.theme.link }}/assets/images/speed_icon.png" width="40">Velocidade
+										</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>16</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>13</span>
+									</div>
+								</div>
+							{% endif %}
+							{% if post.cosmo_type == 'star' or post.cosmo_type == 'legendary' %}
+								<div class="col-12 cosmo-table-sub">
+									<div class="col-8">
+										<span>
+											<img src="{{ site.theme.link }}/assets/images/ls_icon.png" width="40">Roubo de vida
+										</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>3,83%</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>3,45%</span>
+									</div>
+								</div>
+							{% endif %}
+							{% if post.cosmo_type != 'solar' %}
+								<div class="col-12 cosmo-table-sub">
+									<div class="col-8">
+										<span>
+											<img src="{{ site.theme.link }}/assets/images/cura_icon.png" width="40">Cura
+										</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>2,15%</span>
+									</div>
+									<div class="col-2 my-auto">
+										<span>1,94%</span>
+									</div>
+								</div>
+							{% endif %}
+
+						</div>
+						<hr>
+						<h3 class="mb-4 mt-4">
+							Custo do cosmo (SS)
+						</h3>
+						<div class="col-12 px-lg-0 cosmo-table cosmo-xp-table">
+							<div class="col-12 cosmo-table-header">
+								<div class="col-6">
+									<span>LEVEL</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>COSMO XP</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>GOLD</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>1 > 2</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>1680</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>10000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>2 > 3</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>2550</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>15000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>3 > 4</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>5050</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>30000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>4 > 5</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>7600</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>45000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>5 > 6</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>15000</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>60000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>6 > 7</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>24500</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>135000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>7 > 8</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>32000</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>180000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>8 > 9</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>39500</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>225000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub">
+								<div class="col-6">
+									<span>9 > 10</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>77120</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>450000</span>
+								</div>
+							</div>
+							<div class="col-12 cosmo-table-sub-total">
+								<div class="col-6">
+									<span>TOTAL</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>205.000</span>
+								</div>
+								<div class="col-3 my-auto">
+									<span>1,150.000</span>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+{% block script %}
+	{{ parent() }}
+	<script type="application/javascript">
+		function openTab(evt, tabName) {
+var i,
+tabcontent,
+tablinks;
+
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+
+tablinks = document.getElementsByClassName("ch-cosmo-link");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+
+document.getElementById(tabName).style.display = "block";
+evt.currentTarget.className += " active";
+}
+	</script>
+{% endblock %}

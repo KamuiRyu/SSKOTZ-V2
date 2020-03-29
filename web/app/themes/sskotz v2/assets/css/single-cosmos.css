@@ -1,0 +1,284 @@
+:root {
+  --bg-cosmo-color: #fff;
+  --bg-cosmo2-color: #ededed;
+  --font-cosmo-color: #2e2e2e;
+}
+[data-theme='dark'] {
+  --bg-cosmo-color: #1f2025;
+  --bg-cosmo2-color: #2f3036;
+  --font-cosmo-color: #ebebeb;
+}
+
+.header-banner {
+  display: none !important;
+}
+
+hr {
+  border-top: 1px solid var(--bg-cosmo2-color) !important;
+}
+
+.cosmo-block {
+  background-color: var(--bg-cosmo-color);
+  padding: 1rem;
+  transition: background-color 0.5s, height 0.5s ease-in-out;
+  border-radius: 5px;
+}
+
+.cosmo-block .ch-title {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--bg-cosmo2-color);
+  transition: 0.5s all ease-in-out;
+}
+
+.cosmo-block .ch-title span {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--font-cosmo-color);
+}
+
+.cosmo-block.cosmo-info .cosmo-img {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.cosmo-block.cosmo-info .cosmo-bonus {
+  padding: 0.7rem 0;
+  transition: 0.5s all ease-in-out;
+}
+
+.cosmo-block.cosmo-info .cosmo-img.cosmo-legendary {
+  background: linear-gradient(#a483ca, #9362b4);
+  border: 1px solid #8c65b0;
+  box-shadow: 0 0 20px #8c65b0;
+}
+
+.cosmo-block.cosmo-info .cosmo-img.cosmo-solar {
+  background: linear-gradient(#fbaf80, #d55951);
+  border: 1px solid #c05551;
+  box-shadow: 0 0 20px #c05551;
+}
+
+.cosmo-block.cosmo-info .cosmo-img.cosmo-lunar {
+  background: linear-gradient(#e9b13f, #e6b549);
+  border: 1px solid #e3b242;
+  box-shadow: 0 0 20px #e3b242;
+}
+
+.cosmo-block.cosmo-info .cosmo-img.cosmo-star {
+  background: linear-gradient(#8287d4, #5a7bc5);
+  border: 1px solid #5c7cbf;
+  box-shadow: 0 0 20px #5c7cbf;
+}
+
+.cosmo-block.cosmo-recommend .ch-cosmo-sub-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cosmo-block.cosmo-recommend .ch-cosmo-sub-list li {
+  border-bottom: 1px solid var(--bg-cosmo2-color);
+  padding: 0.2rem 0;
+  transition: 0.5s all ease-in-out;
+  list-style-type: none;
+}
+
+.cosmo-block.cosmo-recommend .ch-cosmo-sub-list li span {
+  font-size: 18px;
+  vertical-align: middle;
+  color: var(--font-cosmo-color);
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes {
+  margin: 0 auto;
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes .ch-status {
+  background-color: var(--bg-cosmo2-color);
+  margin-bottom: 0.5rem;
+  width: 80%;
+  text-align: left;
+  padding: 0 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes .ch-atributes-title {
+  padding: 1rem 1rem;
+  transition: 0.5s all ease-in-out;
+  text-align: left;
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes .ch-atributes-title span {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--font-cosmo-color);
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes .ch-status:last-child {
+  margin-bottom: 0 !important;
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes .ch-status span {
+  vertical-align: middle;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+}
+.tabcontent {
+  animation: fadeEffect 1s;
+}
+
+.tabcontent.active {
+  display: block;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes .ch-cosmo-links {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  list-style-type: none;
+  border: none;
+  outline: none;
+  margin-bottom: 1rem;
+}
+.cosmo-block.cosmo-info .cosmo-atributes .ch-cosmo-links li {
+  display: inline-block;
+  cursor: pointer;
+  color: var(--font-cosmo-color);
+  cursor: pointer;
+  padding: 0px 16px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.2em;
+  background: #6e6e6e;
+}
+
+.cosmo-block.cosmo-info .cosmo-atributes .ch-cosmo-links li.active {
+  border-bottom: 1px solid var(--primary-color);
+  background: var(--primary-color);
+  color: black;
+}
+
+.cosmo-block.cosmo-drop .text-center span b {
+  color: var(--primary-color);
+}
+
+.cosmo-block.ch-tabcontents {
+  background-color: var(--bg-cosmo-color);
+  padding: 1rem;
+  border-radius: 5px;
+  height: auto;
+  transition: background-color 0.5s, height 0.5s ease-in-out;
+}
+
+.cosmo-block.ch-tabcontents .tab-content {
+  padding: 6px 12px;
+}
+
+.cosmo-block.ch-tabcontents .tab-content .cosmo-table {
+}
+
+.cosmo-block.ch-tabcontents .tab-content .cosmo-table .cosmo-table-header {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bg-cosmo2-color);
+  transition: 0.5s all ease-in-out;
+  display: flex;
+}
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table
+  .cosmo-table-header
+  div:first-child {
+  padding-left: 1rem;
+}
+
+.cosmo-block.ch-tabcontents .tab-content .cosmo-table .cosmo-table-header span {
+  font-size: 18px;
+  font-weight: 600;
+}
+.cosmo-block.ch-tabcontents .tab-content .cosmo-table .cosmo-table-sub {
+  display: flex;
+  padding: 0 !important;
+  border-bottom: 1px solid var(--bg-cosmo2-color);
+  transition: 0.5s all ease-in-out;
+}
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table
+  .cosmo-table-sub:last-child {
+  border: none;
+}
+
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table.cosmo-sub-table
+  .cosmo-table-sub
+  div:first-child {
+  padding: 0.2rem 0 !important;
+}
+
+.cosmo-block.ch-tabcontents .tab-content .cosmo-table .cosmo-table-sub div img,
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table
+  .cosmo-table-sub
+  div
+  span {
+  vertical-align: middle;
+}
+
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table.cosmo-xp-table
+  .cosmo-table-sub
+  div:first-child {
+  padding: 0.2rem 1.5rem !important;
+}
+
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table.cosmo-xp-table
+  .cosmo-table-sub
+  div {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table.cosmo-xp-table
+  .cosmo-table-sub-total {
+  padding: 0.5rem 0;
+  transition: 0.5s all ease-in-out;
+  display: flex;
+}
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table.cosmo-xp-table
+  .cosmo-table-sub-total
+  div:first-child {
+  padding-left: 1rem;
+}
+
+.cosmo-block.ch-tabcontents
+  .tab-content
+  .cosmo-table
+  .cosmo-table-sub-total
+  span {
+  font-size: 18px;
+  font-weight: 600;
+}
