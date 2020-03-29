@@ -282,7 +282,7 @@
 }
 
 .character-block .ch-skills .ch-skill .ch-skill-details {
-  background: url('/app/themes/sskotz v2/assets/images/skill-bg.png');
+  background: url('/app/themes/sskotz-v2/assets/images/skill-bg.png');
   background-repeat: no-repeat;
   min-height: 110px;
   position: relative;
@@ -317,7 +317,7 @@
   .ch-skill-details
   .ch-skill-img-block
   .ch-skill-cost {
-  background: url('/app/themes/sskotz v2/assets/images/cost_icon.png');
+  background: url('/app/themes/sskotz-v2/assets/images/cost_icon.png');
   height: 25px;
   width: 25px;
   position: absolute;
@@ -591,7 +591,7 @@
 }
 
 .character-block .ch-skills-poseidon .ch-skill-poseidon .ch-skill-details {
-  background: url('/app/themes/sskotz v2/assets/images/skill-bg.png');
+  background: url('/app/themes/sskotz-v2/assets/images/skill-bg.png');
   background-repeat: no-repeat;
   min-height: 110px;
   position: relative;
@@ -630,7 +630,7 @@
   .ch-skill-details
   .ch-skill-img-block
   .ch-skill-cost {
-  background: url('/app/themes/sskotz v2/assets/images/cost_icon.png');
+  background: url('/app/themes/sskotz-v2/assets/images/cost_icon.png');
   height: 25px;
   width: 25px;
   position: absolute;

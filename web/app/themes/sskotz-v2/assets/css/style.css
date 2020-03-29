@@ -4,7 +4,7 @@
  * Author: Upstatement and YOU!
 */
 
-@import url('/app/themes/sskotz v2/assets/fonts/fontawesome/css/all.min.css');
+@import url('/app/themes/sskotz-v2/assets/fonts/fontawesome/css/all.min.css');
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap');
 :root {
   --primary-color: #f5b453;
@@ -327,7 +327,7 @@ body {
 }
 
 .header-banner {
-  background-image: url('/app/themes/sskotz v2/assets/images/banner.png');
+  background-image: url('/app/themes/sskotz-v2/assets/images/banner.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;

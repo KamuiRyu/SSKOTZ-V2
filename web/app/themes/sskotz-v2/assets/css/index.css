@@ -144,7 +144,7 @@
 
 main .parallex {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/app/themes/sskotz v2/assets/images/galaxy.jpg');
+    url('/app/themes/sskotz-v2/assets/images/galaxy.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -211,7 +211,7 @@ main .parallex {
 }
 
 .arrow-prev {
-  background: url('/app/themes/sskotz v2/assets/images/arrowPrev.png') no-repeat !important;
+  background: url('/app/themes/sskotz-v2/assets/images/arrowPrev.png') no-repeat !important;
   font-size: 0;
   line-height: 0;
   position: absolute;
@@ -232,7 +232,7 @@ main .parallex {
 }
 
 .arrow-next {
-  background: url('/app/themes/sskotz v2/assets/images/arrowNext.png') no-repeat !important;
+  background: url('/app/themes/sskotz-v2/assets/images/arrowNext.png') no-repeat !important;
   font-size: 0;
   line-height: 0;
   position: absolute;
