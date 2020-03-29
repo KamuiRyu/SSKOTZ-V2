@@ -61,7 +61,9 @@ $context['spotlight'] = Timber::get_posts([
     'category_name' => 'spotlight'
 ]);
 
-$post_spotlight = $context['spotlight'][0]->ID;
+if (!empty($context['spotlight'][0]->ID)) {
+    $post_spotlight = $context['spotlight'][0]->ID;
+}
 
 // Buscar todas as novidades recentes
 $context['public'] = Timber::get_posts([
