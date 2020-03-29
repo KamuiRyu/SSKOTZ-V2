@@ -65,8 +65,7 @@ if (!empty($context['spotlight'][0]->ID)) {
     $post_spotlight = $context['spotlight'][0]->ID;
 }
 
-// Buscar todas as novidades recentes
-$context['public'] = Timber::get_posts([
+$args = array(
     'post_type' => 'post',
     'post_satus' => 'publish',
     'numberposts' => 4,
@@ -76,10 +75,15 @@ $context['public'] = Timber::get_posts([
         $guide_dg->cat_ID,
         $guide_tips->cat_ID,
         $guide_others->cat_ID
-    ),
-    'post__not_in' => array($post_spotlight)
-]);
+    )
+);
 
+if (isset($post_spotlight)) {
+    $args['post__not_in'] = array_merge($post_spotlight);
+}
+
+// Buscar todas as novidades recentes
+$context['public'] = Timber::get_posts($args);
 // Buscar os membros da equipe
 $context['team'] = get_users([
     'numberposts' => 6,
