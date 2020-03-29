@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.html": "twig"
-    },
-    "emmet.includeLanguages": {
-        "twig": "html"
-    },
-    "editor.wordWrap": "on",
-}

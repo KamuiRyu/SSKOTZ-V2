@@ -6,7 +6,7 @@
  */
 
  // FORCE SSL FOR ADMIN
-define('FORCE_SSL_ADMIN', true);
+//define('FORCE_SSL_ADMIN', true);
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 require_once dirname(__DIR__) . '/config/application.php';
