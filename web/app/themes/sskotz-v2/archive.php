@@ -46,11 +46,11 @@ function getArchiveCosmos()
             'cosmo_type' => get_the_terms($cosmo->ID, 'cosmo_type')[0]->slug,
             'cosmo_link' => get_permalink($cosmo->ID),
             'cosmo_status1_tipo' => $data['cosmo_status1']['tipo'],
-            'cosmo_status1_max' => $data['cosmo_status1']['max']
+            'cosmo_status1_max' => $data['cosmo_status1']['max_ss']
         ];
         if ($data['cosmo_qntstatus'] > 1) {
             $info['cosmo_status2_tipo'] = $data['cosmo_status2']['tipo'];
-            $info['cosmo_status2_max'] = $data['cosmo_status2']['max'];
+            $info['cosmo_status2_max'] = $data['cosmo_status2']['max_ss'];
         }
         $cosmos[] = array_merge($info);
     }

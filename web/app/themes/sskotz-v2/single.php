@@ -226,14 +226,12 @@ function getPostCosmo($query)
     $location = rtrim($location, ', ');
     $cosmo['cosmo_drop_location'] = $location;
     $cosmo['cosmo_status1_tipo'] = $data['cosmo_status1']['tipo'];
-    $cosmo['cosmo_status1_max'] = $data['cosmo_status1']['max'];
-    $cosmo['cosmo_status1_s_tipo'] = $data['cosmo_status1_s']['tipo'];
-    $cosmo['cosmo_status1_s_max'] = $data['cosmo_status1_s']['max'];
+    $cosmo['cosmo_status1_max_ss'] = $data['cosmo_status1']['max_ss'];
+    $cosmo['cosmo_status1_max_s'] = $data['cosmo_status1']['max_s'];
     if ($data['cosmo_qntstatus'] > 1) {
         $cosmo['cosmo_status2_tipo'] = $data['cosmo_status2']['tipo'];
-        $cosmo['cosmo_status2_max'] = $data['cosmo_status2']['max'];
-        $cosmo['cosmo_status2_s_tipo'] = $data['cosmo_status2_s']['tipo'];
-        $cosmo['cosmo_status2_s_max'] = $data['cosmo_status2_s']['max'];
+        $cosmo['cosmo_status2_max_ss'] = $data['cosmo_status2']['max_ss'];
+        $cosmo['cosmo_status2_max_s'] = $data['cosmo_status2']['max_s'];
     }
 
     return $cosmo;
