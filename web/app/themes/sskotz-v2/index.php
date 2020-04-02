@@ -61,10 +61,6 @@ $context['spotlight'] = Timber::get_posts([
     'category_name' => 'spotlight'
 ]);
 
-if (!empty($context['spotlight'][0]->ID)) {
-    $post_spotlight = $context['spotlight'][0]->ID;
-}
-
 $args = array(
     'post_type' => 'post',
     'post_satus' => 'publish',
@@ -78,8 +74,8 @@ $args = array(
     )
 );
 
-if (isset($post_spotlight)) {
-    $args['post__not_in'] = array_merge($post_spotlight);
+if (!empty($context['spotlight'][0]->ID)) {
+    $args['post__not_in'] = array($context['spotlight'][0]->ID);
 }
 
 // Buscar todas as novidades recentes

@@ -1,421 +1,515 @@
-{% extends "base.twig" %}
+{% extends 'base.twig' %}
 {% block head %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ site.theme.link }}//assets/css/archive.css" type="text/css" media="screen"/>
+  {{ parent() }}
+  <link rel="stylesheet"
+    href="{{ site.theme.link }}//assets/css/archive.css"
+    type="text/css"
+    media="screen" />
 {% endblock %}
 {% block content %}
-
-	<section class="pt-4 pb-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 mb-4 text-center">
-					<h2 class="text-uppercase">Cosmos</h2>
-					<p class="mb-0">Nesse tópico você pode checar sobre todos os cosmos presentes no Servidor Global. Veja cada um individualmente para saber sobre os subatributos que eles proporcionam.
-					</p>
-				</div>
-			</div>
-			<div class="row mt-4 justify-content-center">
-				<div class="col-6">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="label-namecosmo">Nome do cosmo</span>
-						</div>
-                        <input type="text" class="form-control" id="txtNameCosmo" aria-describedby="label-namecosmo">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-search-cosmos" type="button" id="btn-name-cosmo-search">Pesquisar</button>
-                        </div>
-					</div>
-				</div>
-				<div class="col-6">
-					<div class="input-group mb-3">
-                        <div class="input-group-append">
-							<label class="input-group-text" for="txtTypeCosmo">Tipo de cosmo</label>
-						</div>
-						<select class="custom-select" id="txtTypeCosmo">
-                            <option selected disabled>Escolha um opção</option>
-                            <option value="type-all">Todos</option>
-							<option value="type-solar">Solar</option>
-							<option value="type-lunar">Lunar</option>
-							<option value="type-star">Estrela</option>
-							<option value="type-legendary">Lendário</option>
-                        </select>
-                        <div class="input-group-prepend">
-                            <button class="btn btn-search-cosmos" type="button" id="btn-type-cosmo-search">Pesquisar</button>
-                        </div>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center align-items-center type-cosmos" id="type-legendary">
-                <div class="col-12">
-                    <div class="mini divider">
-                        <div class="sk-folding-cube">
-                            <div class="sk-cube1 sk-cube"></div>
-                            <div class="sk-cube2 sk-cube"></div>
-                            <div class="sk-cube4 sk-cube"></div>
-                            <div class="sk-cube3 sk-cube"></div>
-                        </div>
+  <section class="pt-4 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mb-4 text-center">
+          <h2 class="text-uppercase">
+            Cosmos
+          </h2>
+          <p class="mb-0">
+            Nesse tópico você pode checar sobre todos os cosmos presentes no
+            Servidor Global. Veja cada um individualmente para saber sobre os
+            subatributos que eles proporcionam.
+          </p>
+        </div>
+      </div>
+      <div class="row mt-4 justify-content-center">
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="label-namecosmo">
+                Nome do cosmo
+              </span>
+            </div>
+            <input type="text"
+              class="form-control"
+              id="txtNameCosmo"
+              aria-describedby="label-namecosmo" />
+            <div class="input-group-prepend">
+              <button class="btn btn-search-cosmos"
+                type="button"
+                id="btn-name-cosmo-search">
+                Pesquisar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <label class="input-group-text" for="txtTypeCosmo">
+                Tipo de cosmo
+              </label>
+            </div>
+            <select class="custom-select" id="txtTypeCosmo">
+              <option selected disabled>
+                Escolha um opção
+              </option>
+              <option value="type-all">
+                Todos
+              </option>
+              <option value="type-solar">
+                Solar
+              </option>
+              <option value="type-lunar">
+                Lunar
+              </option>
+              <option value="type-star">
+                Estrela
+              </option>
+              <option value="type-legendary">
+                Lendário
+              </option>
+            </select>
+            <div class="input-group-prepend">
+              <button class="btn btn-search-cosmos"
+                type="button"
+                id="btn-type-cosmo-search">
+                Pesquisar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center type-cosmos"
+        id="type-legendary">
+        <div class="col-12">
+          <div class="mini divider">
+            <div class="sk-folding-cube">
+              <div class="sk-cube1 sk-cube"></div>
+              <div class="sk-cube2 sk-cube"></div>
+              <div class="sk-cube4 sk-cube"></div>
+              <div class="sk-cube3 sk-cube"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <h4 class="text-uppercase" style="color: #a483ca;">
+            Lendário
+          </h4>
+        </div>
+        {% for cosmo in posts %}
+          {% if cosmo.cosmo_type == 'legendary' %}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+              <div class="cosmo-card cosmo-card-animation cosmo-legendary-animation"
+                id="{{ cosmo.cosmo_name }}"
+                style="min-height: 310px;"
+                onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
+                <div class="container-fluid m-auto">
+                  <div class="row">
+                    <div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
+                      <img src="{{ cosmo.cosmo_img }}"
+                        class="img-fluid cosmo-img cosmo-legendary"
+                        alt="{{ cosmo.cosmo_name }}" />
                     </div>
-                </div>
-				<div class="col-12 mb-3">
-					<h4 class="text-uppercase" style="color: #a483ca;">Lendário</h4>
-				</div>
-				{% for cosmo in posts %}
-					{% if cosmo.cosmo_type == 'legendary' %}
-						<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-4 ">
-							<div class="cosmo-card cosmo-card-animation cosmo-legendary-animation" id="{{ cosmo.cosmo_name }}" style="min-height: 270px;" onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
-								<div class="container-fluid m-auto">
-									<div class="row">
-										<div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
-											<img src="{{cosmo.cosmo_img}}" class="img-fluid cosmo-img cosmo-legendary" alt="{{cosmo.cosmo_name}}">
-										</div>
-										<div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg  m-auto">
-											<div class="py-2">
-												<div class="col-12 p-0">
-													<h5 class="text-white">{{cosmo.cosmo_name}}</h5>
-												</div>
-												<div class="col-12 rounded-l mb-2 cosmo-status">
-													<div class="d-inline-block">
-														<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status1_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo }}">
-													</div>
-													<div class="text-white d-inline-block">
-														<span>{{ cosmo.cosmo_status1_max }}</span>
-													</div>
-												</div>
-												{% if cosmo.cosmo_status2_tipo != '' %}
-													<div class="col-12 rounded-l mb-2 cosmo-status">
-														<div class="d-inline-block">
-															<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status2_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo2 }}">
-														</div>
-														<div class="text-white d-inline-block">
-															<span>{{ cosmo.cosmo_status2_max }}</span>
-														</div>
-													</div>
-												{% endif %}
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											{% if cosmo.cosmo_type == 'legendary' %}
-												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
-											{% else %}
-												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
-												<span style="vertical-align: middle;">
-													{% if cosmo.cosmo_bonus == 'atqf' %}
-														Ataque físico +10%
-													{% elseif cosmo.cosmo_bonus == 'atqc' %}
-														Ataque cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
-														Dano cósmico +5%
-													{% elseif cosmo.cosmo_bonus == 'speed' %}
-														Velocidade +20
-													{% elseif cosmo.cosmo_bonus == 'pv' %}
-														PV +10%
-													{% elseif cosmo.cosmo_bonus == 'rsc' %}
-														Resistência á dano cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'rs' %}
-														Resistência a status +15%
-													{% elseif cosmo.cosmo_bonus == 'pf' %}
-														Perfuração física +100
-													{% endif %}
-												</span>
-												
-											{% endif %}
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					{% endif %}
-				{% endfor %}
-			</div>
-			<div class="row justify-content-center align-items-center type-cosmos" id="type-solar">
-                <div class="col-12">
-                    <div class="mini divider">
-                        <div class="sk-folding-cube">
-                            <div class="sk-cube1 sk-cube"></div>
-                            <div class="sk-cube2 sk-cube"></div>
-                            <div class="sk-cube4 sk-cube"></div>
-                            <div class="sk-cube3 sk-cube"></div>
+                    <div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg m-auto">
+                      <div class="py-2">
+                        <div class="col-12 p-0">
+                          <h5 class="text-white">
+                            {{ cosmo.cosmo_name }}
+                          </h5>
                         </div>
-                    </div>
-                </div>
-				<div class="col-12 mb-3">
-					<h4 class="text-uppercase" style="color: #fbaf80;">Solar</h4>
-				</div>
-				{% for cosmo in posts %}
-					{% if cosmo.cosmo_type == 'solar' %}
-						<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-4">
-							<div class="cosmo-card cosmo-card-animation cosmo-solar-animation" id="{{ cosmo.cosmo_name }}" style="min-height: 270px;" onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
-								<div class="container-fluid m-auto">
-									<div class="row">
-										<div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
-											<img src="{{cosmo.cosmo_img}}" class="img-fluid cosmo-img cosmo-solar" alt="{{cosmo.cosmo_name}}">
-										</div>
-										<div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg  m-auto">
-											<div class="py-2">
-												<div class="col-12 p-0">
-													<h5 class="text-white">{{cosmo.cosmo_name}}</h5>
-												</div>
-												<div class="col-12 rounded-l mb-2 cosmo-status">
-													<div class="d-inline-block">
-														<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status1_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo }}">
-													</div>
-													<div class="text-white d-inline-block">
-														<span>{{ cosmo.cosmo_status1_max }}</span>
-													</div>
-												</div>
-												{% if cosmo.cosmo_status2_tipo != '' %}
-													<div class="col-12 rounded-l mb-2 cosmo-status">
-														<div class="d-inline-block">
-															<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status2_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo2 }}">
-														</div>
-														<div class="text-white d-inline-block">
-															<span>{{ cosmo.cosmo_status2_max }}</span>
-														</div>
-													</div>
-												{% endif %}
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											{% if cosmo.cosmo_type == 'legendary' %}
-												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
-											{% else %}
-												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
-												<span style="vertical-align: middle;">
-													{% if cosmo.cosmo_bonus == 'atqf' %}
-														Ataque físico +10%
-													{% elseif cosmo.cosmo_bonus == 'atqc' %}
-														Ataque cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
-														Dano cósmico +5%
-													{% elseif cosmo.cosmo_bonus == 'speed' %}
-														Velocidade +20
-													{% elseif cosmo.cosmo_bonus == 'pv' %}
-														PV +10%
-													{% elseif cosmo.cosmo_bonus == 'rsc' %}
-														Resistência á dano cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'rs' %}
-														Resistência a status +15%
-													{% elseif cosmo.cosmo_bonus == 'pf' %}
-														Perfuração física +100
-													{% endif %}
-												</span>
-												
-											{% endif %}
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					{% endif %}
-				{% endfor %}
-			</div>
-			<div class="row justify-content-center align-items-center type-cosmos" id="type-lunar">
-                <div class="col-12">
-                    <div class="mini divider">
-                        <div class="sk-folding-cube">
-                            <div class="sk-cube1 sk-cube"></div>
-                            <div class="sk-cube2 sk-cube"></div>
-                            <div class="sk-cube4 sk-cube"></div>
-                            <div class="sk-cube3 sk-cube"></div>
+                        <div class="col-12 rounded-l mb-2 cosmo-status">
+                          <div class="d-inline-block">
+                            <img src="{{ site.theme.link }}/assets/images/{{
+                              cosmo.cosmo_status1_tipo
+                              }}_icon.png"
+                              alt="{{ cosmo.cosmo_status1_tipo }}" />
+                          </div>
+                          <div class="text-white d-inline-block">
+                            <span>{{ cosmo.cosmo_status1_max }}</span>
+                          </div>
                         </div>
+                        {% if cosmo.cosmo_status2_tipo != '' %}
+                          <div class="col-12 rounded-l mb-2 cosmo-status">
+                            <div class="d-inline-block">
+                              <img src="{{ site.theme.link }}/assets/images/{{
+                                cosmo.cosmo_status2_tipo
+                                }}_icon.png"
+                                alt="{{ cosmo.cosmo_status1_tipo2 }}" />
+                            </div>
+                            <div class="text-white d-inline-block">
+                              <span>{{ cosmo.cosmo_status2_max }}</span>
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
                     </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
+                      {% if cosmo.cosmo_type == 'legendary' %}
+                        <span style="vertical-align: middle;">
+                          {{ cosmo.cosmo_bonus }}
+                        </span>
+                      {% else %}
+                        <img src="{{ site.theme.link }}/assets/images/{{
+                          cosmo.cosmo_bonus
+                          }}_icon.png" />
+                        <span style="vertical-align: middle;">
+                          {% if cosmo.cosmo_bonus == 'atqf' %}
+                            Ataque físico +10%
+                          {% elseif cosmo.cosmo_bonus == 'atqc' %}
+                            Ataque cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'dmgc' %}
+                            Dano cósmico +5%
+                          {% elseif cosmo.cosmo_bonus == 'speed' %}
+                            Velocidade +20
+                          {% elseif cosmo.cosmo_bonus == 'pv' %}
+                            PV +10%
+                          {% elseif cosmo.cosmo_bonus == 'rsc' %}
+                            Resistência á dano cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'rs' %}
+                            Resistência a status +15%
+                          {% elseif cosmo.cosmo_bonus == 'pf' %}
+                            Perfuração física +100
+                          {% endif %}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
                 </div>
-				<div class="col-12 mb-3">
-					<h4 class="text-uppercase" style="color: #e9b13f;">Lunar</h4>
-				</div>
-				{% for cosmo in posts %}
-					{% if cosmo.cosmo_type == 'lunar' %}
-						<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-4">
-							<div class="cosmo-card cosmo-card-animation cosmo-lunar-animation" id="{{ cosmo.cosmo_name }}" style="min-height: 270px;" onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
-								<div class="container-fluid m-auto">
-									<div class="row">
-										<div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
-											<img src="{{cosmo.cosmo_img}}" class="img-fluid cosmo-img cosmo-lunar" alt="{{cosmo.cosmo_name}}">
-										</div>
-										<div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg  m-auto">
-											<div class="py-2">
-												<div class="col-12 p-0">
-													<h5 class="text-white">{{cosmo.cosmo_name}}</h5>
-												</div>
-												<div class="col-12 rounded-l mb-2 cosmo-status">
-													<div class="d-inline-block">
-														<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status1_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo }}">
-													</div>
-													<div class="text-white d-inline-block">
-														<span>{{ cosmo.cosmo_status1_max }}</span>
-													</div>
-												</div>
-												{% if cosmo.cosmo_status2_tipo != '' %}
-													<div class="col-12 rounded-l mb-2 cosmo-status">
-														<div class="d-inline-block">
-															<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status2_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo2 }}">
-														</div>
-														<div class="text-white d-inline-block">
-															<span>{{ cosmo.cosmo_status2_max }}</span>
-														</div>
-													</div>
-												{% endif %}
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											{% if cosmo.cosmo_type == 'legendary' %}
-												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
-											{% else %}
-												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
-												<span style="vertical-align: middle;">
-													{% if cosmo.cosmo_bonus == 'atqf' %}
-														Ataque físico +10%
-													{% elseif cosmo.cosmo_bonus == 'atqc' %}
-														Ataque cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
-														Dano cósmico +5%
-													{% elseif cosmo.cosmo_bonus == 'speed' %}
-														Velocidade +20
-													{% elseif cosmo.cosmo_bonus == 'pv' %}
-														PV +10%
-													{% elseif cosmo.cosmo_bonus == 'rsc' %}
-														Resistência á dano cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'rs' %}
-														Resistência a status +15%
-													{% elseif cosmo.cosmo_bonus == 'pf' %}
-														Perfuração física +100
-													{% endif %}
-												</span>
-												
-											{% endif %}
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					{% endif %}
-				{% endfor %}
-			</div>
-			<div class="row justify-content-center align-items-center type-cosmos" id="type-star">
-                <div class="col-12">
-                    <div class="mini divider">
-                        <div class="sk-folding-cube">
-                            <div class="sk-cube1 sk-cube"></div>
-                            <div class="sk-cube2 sk-cube"></div>
-                            <div class="sk-cube4 sk-cube"></div>
-                            <div class="sk-cube3 sk-cube"></div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="row justify-content-center align-items-center type-cosmos"
+        id="type-solar">
+        <div class="col-12">
+          <div class="mini divider">
+            <div class="sk-folding-cube">
+              <div class="sk-cube1 sk-cube"></div>
+              <div class="sk-cube2 sk-cube"></div>
+              <div class="sk-cube4 sk-cube"></div>
+              <div class="sk-cube3 sk-cube"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <h4 class="text-uppercase" style="color: #fbaf80;">
+            Solar
+          </h4>
+        </div>
+        {% for cosmo in posts %}
+          {% if cosmo.cosmo_type == 'solar' %}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+              <div class="cosmo-card cosmo-card-animation cosmo-solar-animation"
+                id="{{ cosmo.cosmo_name }}"
+                style="min-height: 310px;"
+                onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
+                <div class="container-fluid m-auto">
+                  <div class="row">
+                    <div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
+                      <img src="{{ cosmo.cosmo_img }}"
+                        class="img-fluid cosmo-img cosmo-solar"
+                        alt="{{ cosmo.cosmo_name }}" />
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg m-auto">
+                      <div class="py-2">
+                        <div class="col-12 p-0">
+                          <h5 class="text-white">
+                            {{ cosmo.cosmo_name }}
+                          </h5>
                         </div>
+                        <div class="col-12 rounded-l mb-2 cosmo-status">
+                          <div class="d-inline-block">
+                            <img src="{{ site.theme.link }}/assets/images/{{
+                              cosmo.cosmo_status1_tipo
+                              }}_icon.png"
+                              alt="{{ cosmo.cosmo_status1_tipo }}" />
+                          </div>
+                          <div class="text-white d-inline-block">
+                            <span>{{ cosmo.cosmo_status1_max }}</span>
+                          </div>
+                        </div>
+                        {% if cosmo.cosmo_status2_tipo != '' %}
+                          <div class="col-12 rounded-l mb-2 cosmo-status">
+                            <div class="d-inline-block">
+                              <img src="{{ site.theme.link }}/assets/images/{{
+                                cosmo.cosmo_status2_tipo
+                                }}_icon.png"
+                                alt="{{ cosmo.cosmo_status1_tipo2 }}" />
+                            </div>
+                            <div class="text-white d-inline-block">
+                              <span>{{ cosmo.cosmo_status2_max }}</span>
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
                     </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
+                      {% if cosmo.cosmo_type == 'legendary' %}
+                        <span style="vertical-align: middle;">
+                          {{ cosmo.cosmo_bonus }}
+                        </span>
+                      {% else %}
+                        <img src="{{ site.theme.link }}/assets/images/{{
+                          cosmo.cosmo_bonus
+                          }}_icon.png" />
+                        <span style="vertical-align: middle;">
+                          {% if cosmo.cosmo_bonus == 'atqf' %}
+                            Ataque físico +10%
+                          {% elseif cosmo.cosmo_bonus == 'atqc' %}
+                            Ataque cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'dmgc' %}
+                            Dano cósmico +5%
+                          {% elseif cosmo.cosmo_bonus == 'speed' %}
+                            Velocidade +20
+                          {% elseif cosmo.cosmo_bonus == 'pv' %}
+                            PV +10%
+                          {% elseif cosmo.cosmo_bonus == 'rsc' %}
+                            Resistência á dano cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'rs' %}
+                            Resistência a status +15%
+                          {% elseif cosmo.cosmo_bonus == 'pf' %}
+                            Perfuração física +100
+                          {% endif %}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
                 </div>
-				<div class="col-12 mb-3">
-					<h4 class="text-uppercase" style="color: #8287d4;">Estrela</h4>
-				</div>
-				{% for cosmo in posts %}
-					{% if cosmo.cosmo_type == 'star' %}
-						<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-4" >
-							<div class="cosmo-card cosmo-card-animation cosmo-star-animation" id="{{ cosmo.cosmo_name }}" style="min-height: 270px;" onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
-								<div class="container-fluid m-auto">
-									<div class="row">
-										<div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
-											<img src="{{cosmo.cosmo_img}}" class="img-fluid cosmo-img cosmo-star" alt="{{cosmo.cosmo_name}}">
-										</div>
-										<div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg  m-auto">
-											<div class="py-2">
-												<div class="col-12 p-0">
-													<h5 class="text-white">{{cosmo.cosmo_name}}</h5>
-												</div>
-												<div class="col-12 rounded-l mb-2 cosmo-status">
-													<div class="d-inline-block">
-														<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status1_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo }}">
-													</div>
-													<div class="text-white d-inline-block">
-														<span>{{ cosmo.cosmo_status1_max }}</span>
-													</div>
-												</div>
-												{% if cosmo.cosmo_status2_tipo != '' %}
-													<div class="col-12 rounded-l mb-2 cosmo-status">
-														<div class="d-inline-block">
-															<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_status2_tipo }}_icon.png" alt="{{ cosmo.cosmo_status1_tipo2 }}">
-														</div>
-														<div class="text-white d-inline-block">
-															<span>{{ cosmo.cosmo_status2_max }}</span>
-														</div>
-													</div>
-												{% endif %}
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
-											{% if cosmo.cosmo_type == 'legendary' %}
-												<span style="vertical-align: middle;">{{cosmo.cosmo_bonus}}</span>
-											{% else %}
-												<img src="{{ site.theme.link }}/assets/images/{{ cosmo.cosmo_bonus }}_icon.png">
-												<span style="vertical-align: middle;">
-													{% if cosmo.cosmo_bonus == 'atqf' %}
-														Ataque físico +10%
-													{% elseif cosmo.cosmo_bonus == 'atqc' %}
-														Ataque cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'dmgc' %}
-														Dano cósmico +5%
-													{% elseif cosmo.cosmo_bonus == 'speed' %}
-														Velocidade +20
-													{% elseif cosmo.cosmo_bonus == 'pv' %}
-														PV +10%
-													{% elseif cosmo.cosmo_bonus == 'rsc' %}
-														Resistência á dano cósmico +10%
-													{% elseif cosmo.cosmo_bonus == 'rs' %}
-														Resistência a status +15%
-													{% elseif cosmo.cosmo_bonus == 'pf' %}
-														Perfuração física +100
-													{% endif %}
-												</span>
-												
-											{% endif %}
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					{% endif %}
-				{% endfor %}
-			</div>
-		</div>
-	</section>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="row justify-content-center align-items-center type-cosmos"
+        id="type-lunar">
+        <div class="col-12">
+          <div class="mini divider">
+            <div class="sk-folding-cube">
+              <div class="sk-cube1 sk-cube"></div>
+              <div class="sk-cube2 sk-cube"></div>
+              <div class="sk-cube4 sk-cube"></div>
+              <div class="sk-cube3 sk-cube"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <h4 class="text-uppercase" style="color: #e9b13f;">
+            Lunar
+          </h4>
+        </div>
+        {% for cosmo in posts %}
+          {% if cosmo.cosmo_type == 'lunar' %}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+              <div class="cosmo-card cosmo-card-animation cosmo-lunar-animation"
+                id="{{ cosmo.cosmo_name }}"
+                style="min-height: 310px;"
+                onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
+                <div class="container-fluid m-auto">
+                  <div class="row">
+                    <div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
+                      <img src="{{ cosmo.cosmo_img }}"
+                        class="img-fluid cosmo-img cosmo-lunar"
+                        alt="{{ cosmo.cosmo_name }}" />
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg m-auto">
+                      <div class="py-2">
+                        <div class="col-12 p-0">
+                          <h5 class="text-white">
+                            {{ cosmo.cosmo_name }}
+                          </h5>
+                        </div>
+                        <div class="col-12 rounded-l mb-2 cosmo-status">
+                          <div class="d-inline-block">
+                            <img src="{{ site.theme.link }}/assets/images/{{
+                              cosmo.cosmo_status1_tipo
+                              }}_icon.png"
+                              alt="{{ cosmo.cosmo_status1_tipo }}" />
+                          </div>
+                          <div class="text-white d-inline-block">
+                            <span>{{ cosmo.cosmo_status1_max }}</span>
+                          </div>
+                        </div>
+                        {% if cosmo.cosmo_status2_tipo != '' %}
+                          <div class="col-12 rounded-l mb-2 cosmo-status">
+                            <div class="d-inline-block">
+                              <img src="{{ site.theme.link }}/assets/images/{{
+                                cosmo.cosmo_status2_tipo
+                                }}_icon.png"
+                                alt="{{ cosmo.cosmo_status1_tipo2 }}" />
+                            </div>
+                            <div class="text-white d-inline-block">
+                              <span>{{ cosmo.cosmo_status2_max }}</span>
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
+                      {% if cosmo.cosmo_type == 'legendary' %}
+                        <span style="vertical-align: middle;">
+                          {{ cosmo.cosmo_bonus }}
+                        </span>
+                      {% else %}
+                        <img src="{{ site.theme.link }}/assets/images/{{
+                          cosmo.cosmo_bonus
+                          }}_icon.png" />
+                        <span style="vertical-align: middle;">
+                          {% if cosmo.cosmo_bonus == 'atqf' %}
+                            Ataque físico +10%
+                          {% elseif cosmo.cosmo_bonus == 'atqc' %}
+                            Ataque cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'dmgc' %}
+                            Dano cósmico +5%
+                          {% elseif cosmo.cosmo_bonus == 'speed' %}
+                            Velocidade +20
+                          {% elseif cosmo.cosmo_bonus == 'pv' %}
+                            PV +10%
+                          {% elseif cosmo.cosmo_bonus == 'rsc' %}
+                            Resistência á dano cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'rs' %}
+                            Resistência a status +15%
+                          {% elseif cosmo.cosmo_bonus == 'pf' %}
+                            Perfuração física +100
+                          {% endif %}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="row justify-content-center align-items-center type-cosmos"
+        id="type-star">
+        <div class="col-12">
+          <div class="mini divider">
+            <div class="sk-folding-cube">
+              <div class="sk-cube1 sk-cube"></div>
+              <div class="sk-cube2 sk-cube"></div>
+              <div class="sk-cube4 sk-cube"></div>
+              <div class="sk-cube3 sk-cube"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <h4 class="text-uppercase" style="color: #8287d4;">
+            Estrela
+          </h4>
+        </div>
+        {% for cosmo in posts %}
+          {% if cosmo.cosmo_type == 'star' %}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+              <div class="cosmo-card cosmo-card-animation cosmo-star-animation"
+                id="{{ cosmo.cosmo_name }}"
+                style="min-height: 310px;"
+                onclick="window.location.href = '{{ cosmo.cosmo_link }}'">
+                <div class="container-fluid m-auto">
+                  <div class="row">
+                    <div class="col-4 col-sm-4 col-md-5 col-lg-4 col-xl-5 m-auto">
+                      <img src="{{ cosmo.cosmo_img }}"
+                        class="img-fluid cosmo-img cosmo-star"
+                        alt="{{ cosmo.cosmo_name }}" />
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-7 col-lg-8 col-xl-7 text-left rounded-lg m-auto">
+                      <div class="py-2">
+                        <div class="col-12 p-0">
+                          <h5 class="text-white">
+                            {{ cosmo.cosmo_name }}
+                          </h5>
+                        </div>
+                        <div class="col-12 rounded-l mb-2 cosmo-status">
+                          <div class="d-inline-block">
+                            <img src="{{ site.theme.link }}/assets/images/{{
+                              cosmo.cosmo_status1_tipo
+                              }}_icon.png"
+                              alt="{{ cosmo.cosmo_status1_tipo }}" />
+                          </div>
+                          <div class="text-white d-inline-block">
+                            <span>{{ cosmo.cosmo_status1_max }}</span>
+                          </div>
+                        </div>
+                        {% if cosmo.cosmo_status2_tipo != '' %}
+                          <div class="col-12 rounded-l mb-2 cosmo-status">
+                            <div class="d-inline-block">
+                              <img src="{{ site.theme.link }}/assets/images/{{
+                                cosmo.cosmo_status2_tipo
+                                }}_icon.png"
+                                alt="{{ cosmo.cosmo_status1_tipo2 }}" />
+                            </div>
+                            <div class="text-white d-inline-block">
+                              <span>{{ cosmo.cosmo_status2_max }}</span>
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-3 text-left rounded-lg text-center">
+                      {% if cosmo.cosmo_type == 'legendary' %}
+                        <span style="vertical-align: middle;">
+                          {{ cosmo.cosmo_bonus }}
+                        </span>
+                      {% else %}
+                        <img src="{{ site.theme.link }}/assets/images/{{
+                          cosmo.cosmo_bonus
+                          }}_icon.png" />
+                        <span style="vertical-align: middle;">
+                          {% if cosmo.cosmo_bonus == 'atqf' %}
+                            Ataque físico +10%
+                          {% elseif cosmo.cosmo_bonus == 'atqc' %}
+                            Ataque cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'dmgc' %}
+                            Dano cósmico +5%
+                          {% elseif cosmo.cosmo_bonus == 'speed' %}
+                            Velocidade +20
+                          {% elseif cosmo.cosmo_bonus == 'pv' %}
+                            PV +10%
+                          {% elseif cosmo.cosmo_bonus == 'rsc' %}
+                            Resistência á dano cósmico +10%
+                          {% elseif cosmo.cosmo_bonus == 'rs' %}
+                            Resistência a status +15%
+                          {% elseif cosmo.cosmo_bonus == 'pf' %}
+                            Perfuração física +100
+                          {% endif %}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 {% endblock %}
 {% block script %}
-{{ parent() }}
-<script type="application/javascript">
-    $("#btn-name-cosmo-search").click(function () {
-        var name = $("#txtNameCosmo").val(),
-        cosmo_card = $('.cosmo-card');
-        for (var i = 0; i < cosmo_card.length; i++) {
-            if(name == ""){
-                $($('.cosmo-card')[i]).parent().fadeIn();
-            }
-            else if($($('.cosmo-card')[i])[0].id.toLowerCase().indexOf(name.toLowerCase()) < 0){
-                var cosmo = $($('.cosmo-card')[i]).parent().fadeOut();
-            }else{
-                $($('.cosmo-card')[i]).parent().fadeIn();
-            }
-        }
-    })
-    $("#btn-type-cosmo-search").click(function () {
-        var type = $("#txtTypeCosmo"),
-        cosmo_card = $('.type-cosmos');
-        for (var i = 0; i < cosmo_card.length; i++) {
-            if(type.val() == "type-all"){
-                $($(".type-cosmos")[i]).fadeIn();
-            }else if(type.val() == ""){
-				$($(".type-cosmos")[i]).fadeIn();
-			}
-            else if (cosmo_card[i].id != type.val()) {
-                $($(".type-cosmos")[i]).fadeOut();
-            }else{
-                $($(".type-cosmos")[i]).fadeIn();
-            }
-        }
-    })
-</script>
+  {{ parent() }}
+  <script type="application/javascript">
+    $("#btn-name-cosmo-search").click(function () { var name =
+    $("#txtNameCosmo").val(), cosmo_card = $('.cosmo-card'); for (var i = 0; i <
+    cosmo_card.length; i++) { if(name == ""){
+    $($('.cosmo-card')[i]).parent().fadeIn(); } else
+    if($($('.cosmo-card')[i])[0].id.toLowerCase().indexOf(name.toLowerCase()) <
+    0){ var cosmo = $($('.cosmo-card')[i]).parent().fadeOut(); }else{
+    $($('.cosmo-card')[i]).parent().fadeIn(); } } })
+    $("#btn-type-cosmo-search").click(function () { var type =
+    $("#txtTypeCosmo"), cosmo_card = $('.type-cosmos'); for (var i = 0; i <
+    cosmo_card.length; i++) { if(type.val() == "type-all"){
+    $($(".type-cosmos")[i]).fadeIn(); }else if(type.val() == ""){
+    $($(".type-cosmos")[i]).fadeIn(); } else if (cosmo_card[i].id != type.val())
+    { $($(".type-cosmos")[i]).fadeOut(); }else{
+    $($(".type-cosmos")[i]).fadeIn(); } } })
+  </script>
 {% endblock %}
