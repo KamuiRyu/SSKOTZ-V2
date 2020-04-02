@@ -388,6 +388,16 @@
   background: linear-gradient(#4bd7ff, #42a6fe, #4bd7ff);
 }
 
+.character-block .ch-skills .ch-skill .ch-skill-rec {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #1f1f1f;
+  font-weight: 400;
+  padding: 0 1rem;
+  background: var(--primary-color);
+  vertical-align: middle;
+}
 .character-block .ch-skills .ch-skill .ch-skill-up {
   padding: 1rem;
 }
