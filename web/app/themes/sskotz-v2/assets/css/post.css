@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-a{
+.post-full .post-full-content a{
   color: var(--primary-color);
 }
 
