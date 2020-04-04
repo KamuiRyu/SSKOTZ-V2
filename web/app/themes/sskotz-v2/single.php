@@ -197,7 +197,7 @@ function getPostCosmo($query)
 
     $location = '';
     foreach ($data['cosmo_drop']['location'] as $lc) {
-        if ($lc == 'Altar') {
+        if ($lc == 'Caixa do Altar') {
             if (!empty($data['cosmo_drop']['days_altar'])) {
                 $drop_days = $data['cosmo_drop']['days_altar'];
                 $days = ' (';
@@ -219,7 +219,16 @@ function getPostCosmo($query)
                 $days .= ')';
                 $location = $location . $lc . $days . ', ';
             }
-        } else {
+        } else if($lc == 'Drop Altar'){
+            $drop_days = $data['cosmo_drop']['days_drop_altar'];
+            $days = ' (';
+            foreach ($drop_days as $day) {
+                $days = $days . $day . ', ';
+            }
+            $days = rtrim($days, ', ');
+            $days .= ')';
+            $location = $location . $lc . $days . ', ';
+        }else {
             $location = $location . $lc . ', ';
         }
     }
