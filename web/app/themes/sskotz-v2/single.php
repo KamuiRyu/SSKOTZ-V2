@@ -197,7 +197,7 @@ function getPostCosmo($query)
 
     $location = '';
     foreach ($data['cosmo_drop']['location'] as $lc) {
-        if ($lc == 'Caixa do Altar') {
+        if ($lc == 'Caixas do Altar') {
             if (!empty($data['cosmo_drop']['days_altar'])) {
                 $drop_days = $data['cosmo_drop']['days_altar'];
                 $days = ' (';
