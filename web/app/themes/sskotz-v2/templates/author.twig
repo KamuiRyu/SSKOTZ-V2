@@ -1,7 +1,112 @@
 {% extends "base.twig" %}
-
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ site.theme.link }}//assets/css/author.css" type="text/css" media="screen"/>
+{% endblock %}
 {% block content %}
-	{% for post in posts %}
-		{% include ["tease-"~post.post_type~".twig", "tease.twig"] %}
-	{% endfor %}
+	<section class="author-section section py-4">
+		<div class="container">
+			<div class="row author-header">
+				<div class="col-12 d-flex">
+					<div class="col-4 col-xl-2">
+						<img src='{{author.avatar}}' class="img-fluid rounded-circle">
+					</div>
+					<div class="col-6 col-xl-7 my-auto">
+						<div class="col-12 p-0">
+							<h3>{{ author.name }}</h3>
+							<span>{{ author.role }}</span>
+						</div>
+						<div class="col-12 p-0">
+							<ul class="social mb-0 list-inline mt-3">
+								{% if author.discord is defined %}
+									<li class="list-inline-item">
+										<a href="{{author.discord}}" target="_blank" class="social-link">
+											<i class="fab fa-discord"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% if author.facebook is defined %}
+									<li class="list-inline-item">
+										<a href="{{author.facebook}}" target="_blank" class="social-link">
+											<i class="fab fa-facebook"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% if author.twitter is defined %}
+									<li class="list-inline-item">
+										<a href="{{author.twitter}}" target="_blank" class="social-link">
+											<i class="fab fa-twitter"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% if author.live is defined %}
+									<li class="list-inline-item">
+										<a href="{{author.live}}" target="_blank" class="social-link">
+											<i class="{% if author.plataform_live == 'twitch' %}fab fa-twitch{% elseif author.plataform_live == 'youtube' %}fab fa-youtube{% elseif author.plataform_live == 'facebook' %}fa-facebook-f{% else %}fa fa-headset {% endif %}"></i>
+										</a>
+									</li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row author-body px-2">
+				<div class="col-12 mb-4">
+					<h3 class="text-uppercase">Postagens</h3>
+				</div>
+				<ul class="post-list p-0 d-flex align-items-center justify-content-center m-auto">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 px-md-0 text-center justify-content-center">
+                        {% for post in posts %}
+							{% if post.current is not defined %}
+								<li class="post-card">
+									<a href="{{ post.post_link }}" alt="Link da postagem {{ post.title }}">
+										<img src="{{ post.post_img }}" alt=" {{ post.post_title }} ">
+										<div class="post-card-info">
+											{% for tag in post.post_tag %} {% if tag.slug != 'news' and tag.slug != 'spotlight' and tag.slug != 'guides' %}
+											<span class="post-card-category {{ tag.slug }}-category">
+												
+												{{tag.name}}
+												
+											</span> {% endif %}{% endfor %}
+											<h5>{{ post.post_title }}</h5>
+										</div>
+									</a>
+								</li>
+							{% endif %}
+                        {% endfor %}
+                    </div>
+                </ul>
+			</div>
+			{% if posts.pagination.total > 1 %}
+				<div class="row justify-content-center">
+					<nav>
+						<div class="pagination-container wow zoomIn mar-b-1x" data-wow-duration="0.5s">
+							<ul class="pagination">
+								{% if posts.pagination.prev %}
+									<li class="pagination-item--wide first m-auto">
+										<a class="pagination-link--wide first" href="{{posts.pagination.prev.link}}">
+											<i class="fas fa-chevron-left"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% for page in posts.pagination.pages %}
+									<li class="pagination-item {% if page.title == 1 %}first-number{% endif %}{% if page.current == 1 %} is-active{% endif %}">
+										<a class="pagination-link" href="{{page.link}}">{{page.title}}</a>
+									</li>
+								{% endfor %}
+								{% if posts.pagination.next %}
+									<li class="pagination-item--wide last m-auto">
+										<a class="pagination-link--wide last" href="{{posts.pagination.next.link}}">
+											<i class="fas fa-chevron-right"></i>
+										</a>
+									</li>
+								{% endif %}
+							</ul>
+						</div>
+					</nav>
+				</div>
+			{% endif %}
+		</div>
+	</section>
 {% endblock %}
