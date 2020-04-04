@@ -1,4 +1,4 @@
-* Official link: https://www.sskotz.com
+Official link: https://www.sskotz.com
 
 # [Bedrock](https://roots.io/bedrock/)
 
