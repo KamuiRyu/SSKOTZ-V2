@@ -10,6 +10,10 @@
   text-align: center;
 }
 
+a{
+  color: var(--primary-color);
+}
+
 .post-byline .banner-tag {
   background: #075891 !important;
 }
