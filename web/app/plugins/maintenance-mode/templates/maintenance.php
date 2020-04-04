@@ -48,7 +48,7 @@
         <script>
             $(function () {
                 $.countdown.setDefaults($.countdown.regionalOptions['pt-BR']);
-	            $('#defaultCountdown').countdown({until: new Date(2020, 4-1, 05)}); 
+	            $('#defaultCountdown').countdown({until: new Date(2020, 4-1, 06)}); 
             });
         </script>
         <title>Estamos em manutenção!! < Saint Seiya Awakening</title>
