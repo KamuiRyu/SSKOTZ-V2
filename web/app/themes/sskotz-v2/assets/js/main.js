@@ -6,6 +6,8 @@ toggleSwitchDesktop.addEventListener('change', switchTheme, false);
 toggleSwitchMobile.addEventListener('change', switchTheme, false);
 
 
+
+
 $(document).ready(function() {
     var aestTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
     aestTime = new Date(aestTime).toLocaleString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
