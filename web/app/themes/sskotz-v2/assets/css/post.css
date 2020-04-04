@@ -12,6 +12,7 @@
 
 .post-full .post-full-content a{
   color: var(--primary-color);
+  text-decoration: none;
 }
 
 .post-byline .banner-tag {
