@@ -1,5 +1,47 @@
-{% extends "base.twig" %}
-
+{% block html_head_container %}
+	{% include 'html-header.twig' %}
+	{% block head %}
+		<style>
+			body{
+				padding-top: 0px !important
+			}
+			a{
+				color: var(--primary-color);
+				text-decoration: none;
+			}
+			a:hover{
+				color: var(--primary-color);
+				text-decoration: none;
+			}
+		</style>
+	
+	{% endblock %}
+{% endblock %}
 {% block content %}
-	Sorry, we couldn't find what you're looking for.
+	<section class="404" style="height: 100vh;">
+		<div class="container w-100 h-100">
+			<div class="row my-auto w-100 h-100">
+				<div class="col-8 col-sm-8 col-md-8 col-lg-6 col-xl-4 m-auto" style="margin-bottom: 0 !important;">
+					<img src="{{ site.theme.link }}/assets/images/404.png" class="img-fluid">
+				</div>
+				<div class="col-12 mx-auto text-center">
+					<h1 class="display-3">404</h1>
+					<h4>Página não encontrada.</h4>
+					<p class='lead'>A página que você está procurando não existe ou ocorreu outro erro.</p>
+					<a href="{{ site.link }}" class="text-uppercase">Voltar ao site</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="application/javascript" src="{{ site.theme.link }}/assets/lib/jquery/jquery.min.js"></script>
+    <script type="application/javascript" src="{{ site.theme.link }}/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="{{ site.theme.link }}/assets/lib/popperjs/popper.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+			if (currentTheme) {
+				document.documentElement.setAttribute('data-theme', currentTheme);
+			}
+		});
+	</script>
 {% endblock %}
