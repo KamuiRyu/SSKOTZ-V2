@@ -46,6 +46,9 @@
     "wpackagist-plugin/radio-buttons-for-taxonomies":"2.0.4",
     "wpackagist-plugin/wp-mail-smtp-sendgrid-edition":"0.10.2",
     "wpackagist-plugin/user-role-editor":"4.53.1",
+	    "wpackagist-plugin/wp-smushit":"3.6.1",
+    "wpackagist-plugin/free-cdn":"1.1.2",
+    "wpackagist-plugin/w3-total-cache":"0.13.1",
 	  "wpackagist-plugin/admin-bar-hider":"1.0.0"
   },
   "require-dev": {
