@@ -45,6 +45,7 @@
     "wpackagist-plugin/remove-category-url":"1.1.6",
     "wpackagist-plugin/radio-buttons-for-taxonomies":"2.0.4",
     "wpackagist-plugin/wp-mail-smtp-sendgrid-edition":"0.10.2",
+	"wpackagist-plugin/google-site-kit":"1.6.0",
     "wpackagist-plugin/user-role-editor":"4.53.1",
 	  "wpackagist-plugin/admin-bar-hider":"1.0.0"
   },
