@@ -264,13 +264,6 @@ function getArchivePosts($archive, $paged)
                     '://' .
                     $_SERVER['HTTP_HOST'] .
                     $_SERVER['REQUEST_URI'];
-                    foreach($categories as $category){
-                        if($category->slug == 'news'){
-                            $key .= 'news';
-                        }elseif($category->slug == 'guides'){
-                            $key .= 'guides';
-                        }
-                    }
             
                     foreach ($categories as $category) {
                         if ($category->slug != 'news') {
