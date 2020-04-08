@@ -266,13 +266,15 @@ function getPostsNews($query)
             '://' .
             $_SERVER['HTTP_HOST'] .
             $_SERVER['REQUEST_URI'];
-        if (array_search('news', array_column($categories, 'slug')) > 0) {
-            $key .= 'news';
-        } elseif (
-            array_search('guides', array_column($categories, 'slug')) > 0
-        ) {
-            $key .= 'guides';
+        
+        foreach($categories as $category){
+            if($category->slug == 'news'){
+                $key .= 'news';
+            }elseif($category->slug == 'guides'){
+                $key .= 'guides';
+            }
         }
+
         foreach ($categories as $category) {
             if ($category->slug != 'news') {
                 if ($category->slug != 'guides') {

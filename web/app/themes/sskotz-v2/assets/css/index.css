@@ -91,6 +91,10 @@
   background: #05733b !important;
 }
 
+.post-card .post-card-info .qa-category {
+  background: #b08a20 !important;
+}
+
 .post-card .post-card-info h3 {
   font-size: 1.3rem;
   margin-bottom: 0.8rem;

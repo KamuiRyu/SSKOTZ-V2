@@ -82,6 +82,10 @@ footer ul li a:hover {
   font-size: 25px;
 }
 
+.navbar-toggler:hover{
+  cursor: pointer;
+}
+
 .navbar-toggler .icon-menu:hover {
   color: var(--primary-color);
 }
@@ -138,7 +142,7 @@ footer ul li a:hover {
 }
 
 .nav-group .nav-main .sidenav .sidenav-footer {
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: 0;
 }

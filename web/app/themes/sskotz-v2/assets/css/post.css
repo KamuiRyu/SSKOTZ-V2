@@ -59,6 +59,10 @@
   background: #1bc229 !important;
 }
 
+.post-byline .qa-tag {
+  background: #b08a20 !important;
+}
+
 .post-full-content {
   margin-top: 1rem;
   margin-bottom: 4rem;
