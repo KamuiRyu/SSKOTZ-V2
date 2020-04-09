@@ -251,7 +251,7 @@ function getArchivePosts($archive, $paged)
                     '://' .
                     $_SERVER['HTTP_HOST'] .
                     $_SERVER['REQUEST_URI'];
-                $public['post_link'] = $key . $post->post_name;
+                $public['post_link'] = $key . '/' . $post->post_name;
             } else {
                 $categories = get_the_category($post->ID);
                 $server_protocol =
@@ -264,7 +264,6 @@ function getArchivePosts($archive, $paged)
                     '://' .
                     $_SERVER['HTTP_HOST'] .
                     $_SERVER['REQUEST_URI'];
-            
                     foreach ($categories as $category) {
                         if ($category->slug != 'news') {
                             if ($category->slug != 'guides') {
