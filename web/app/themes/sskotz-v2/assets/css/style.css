@@ -331,7 +331,7 @@ body {
 }
 
 .header-banner {
-  background-image: url('/app/themes/sskotz-v2/assets/images/banner.png');
+  background-image: url('/app/themes/sskotz-v2/assets/images/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
@@ -357,7 +357,8 @@ h4,
 h5,
 p,
 span,
-strong {
+strong,
+label {
   color: var(--font-color);
 }
 

@@ -9,7 +9,7 @@ toggleSwitchMobile.addEventListener('change', switchTheme, false);
 
 
 $(document).ready(function() {
-    var aestTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+    var aestTime = new Date().toLocaleString("en-US", { timeZone: "America/Boa_Vista" });
     aestTime = new Date(aestTime).toLocaleString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
     for (i = 0; i < servertime.length; i++) {
         servertime[i].innerHTML = aestTime;
@@ -25,7 +25,7 @@ $(document).ready(function() {
 });
 
 const interval = setInterval(() => {
-    var aestTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+    var aestTime = new Date().toLocaleString("en-US", { timeZone: "America/Boa_Vista" });
     aestTime = new Date(aestTime).toLocaleString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
     for (i = 0; i < servertime.length; i++) {
         servertime[i].innerHTML = aestTime;
