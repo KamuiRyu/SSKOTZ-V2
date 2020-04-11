@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+{% block head %} {{ parent() }}
+<link rel="stylesheet" href="{{ site.theme.link }}/assets/css/contact.css" type="text/css" media="screen" /> {% endblock %}
+{% block content %}
+
+<section class="pt-4 pb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 text-center mb-4 mx-auto">
+                <h2 class="text-uppercase">Contate-nos</h2>
+                <p>Tem alguma sugestão, problema ou qualquer outra questão? Gostaríamos muito de ouvir de você. Envie-nos uma mensagem e nos responderemos assim que possível.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            {% filter shortcodes %}
+                [contact-form-7 id="1348" title="Contact form 1"]
+            {% endfilter %}
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+{% block script %} {{ parent() }}
+<script type="application/javascript">
+/* Validation Events for changing response CSS classes */
+    document.addEventListener( 'wpcf7invalid', function( event ) {
+        $('.wpcf7-response-output').addClass('alert-invalid');
+        $('.wpcf7-response-output').removeClass('alert-warning');
+        $('.wpcf7-response-output').removeClass('alert-success');
+    }, false );
+    document.addEventListener( 'wpcf7spam', function( event ) {
+        $('.wpcf7-response-output').addClass('alert-warning');
+        $('.wpcf7-response-output').removeClass('alert-success');
+        $('.wpcf7-response-output').removeClass('alert-invalid');
+    }, false );
+    document.addEventListener( 'wpcf7mailfailed', function( event ) {
+        $('.wpcf7-response-output').addClass('alert-warning');
+        $('.wpcf7-response-output').removeClass('alert-success');
+        $('.wpcf7-response-output').removeClass('alert-invalid');
+    }, false );
+    document.addEventListener( 'wpcf7mailsent', function( event ) {
+        $('.wpcf7-response-output').addClass('alert-success');
+        $('.wpcf7-response-output').removeClass('alert-warning');
+        $('.wpcf7-response-output').removeClass('alert-invalid');
+    }, false );
+</script>
+
+{% endblock %}

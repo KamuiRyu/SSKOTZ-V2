@@ -1,0 +1,36 @@
+.wpcf7{
+    width: 100%;
+}
+.form-row label{
+    margin-bottom: 0 !important;
+}
+
+.form-control{
+    border-radius: .10rem;
+}
+
+.form-group .btn{
+    background: var(--primary-color);
+    border-color: transparent;
+}
+.wpcf7-response-output{
+    margin: 0 auto !important;
+    color: #fff !important;
+    padding: 0.7em 1em !important;
+}
+div.wpcf7-validation-errors{
+    border: none;
+}
+
+.alert-success{
+    background-color: #28a745 !important;
+}
+
+.alert-invalid{
+    background-color: #dc3545 !important;
+}
+
+.alert-warning{
+    background-color: #ffc107 !important;
+    color: #343a40 !important;
+}
