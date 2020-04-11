@@ -33,5 +33,9 @@ div.wpcf7-validation-errors{
 .alert-warning{
     background-color: #ffc107 !important;
     color: #343a40 !important;
-    
+
+}
+
+div.wpcf7 .ajax-loader {
+	display: none;
 }
