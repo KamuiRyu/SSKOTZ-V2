@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a376143487f5bb9b070f9ff25336922",
+    "content-hash": "2eb28c68653d65aa578b566d6bab70a6",
     "packages": [
         {
             "name": "composer/installers",
@@ -772,7 +772,7 @@
         },
         {
             "name": "wpackagist-plugin/wp-user-avatar",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-user-avatar/",
@@ -780,7 +780,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-user-avatar.zip?timestamp=1559124163"
+                "url": "https://downloads.wordpress.org/plugin/wp-user-avatar.zip?timestamp=1582179444"
             },
             "require": {
                 "composer/installers": "~1.0"
