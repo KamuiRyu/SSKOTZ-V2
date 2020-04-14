@@ -122,7 +122,7 @@
   z-index: 3;
   display: block;
   height: 100%;
-  width: auto;
+  width: 100%;
   max-width: inherit;
   margin: 0 auto;
   transition: all 0.5s;
@@ -210,8 +210,8 @@ main .parallex {
 .control-c {
   border: none !important;
   outline: none !important;
-  width: 36px !important;
-  height: 54px !important;
+  width: 17px !important;
+  height: 26px !important;
 }
 
 .arrow-prev {
@@ -438,6 +438,32 @@ main .parallex {
   text-transform: capitalize;
 }
 
+.main-channel-videos .slick-slide{
+  width: 320px !important;
+  height: 180px;
+  box-sizing: border-box;
+  margin: 0 30px;
+}
+
+.btn-showmore{
+  background: transparent;
+  outline: none;
+  border: 1px solid var(--primary-color);
+  padding: .5rem 1rem;
+  color: var(--font-color);
+  transition: all 0.5s;
+}
+.btn-showmore:hover{
+  background: var(--primary-color);
+  color: white;
+}
+.slick-prev, .slick-next{
+  transition: all 0.5s;
+}
+.slick-prev::before, .slick-next::before{
+  color: var(--font-color) !important;
+}
+
 @media only screen and (max-width: 600px) {
   .post-card {
     width: 100%;
@@ -508,8 +534,8 @@ main .parallex {
 
 @media only screen and (min-width: 768px) {
   .post-card {
-    width: 48%;
-    height: 210px;
+    width: 48.9%;
+    height: 250px;
     border-left: 0.25rem solid transparent;
     border-right: 0.25rem solid transparent;
   }
@@ -537,7 +563,7 @@ main .parallex {
     width: 80px;
   }
   .post-card img {
-    width: auto !important;
+    width: 100% !important;
   }
 }
 

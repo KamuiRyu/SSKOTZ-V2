@@ -86,6 +86,37 @@ $context['team'] = get_users([
     'orderby' => 'rand'
 ]);
 
+
+/**
+ * Returns latest videos in channel SamukaPLM
+ *
+ * @param [type] $person
+ * @return array
+ */
+
+
+function getVideosChannel(){
+    $channel_id = 'UUfhfWhrL7BNK6-_VtoXMdlA';
+    $api_key = 'AIzaSyAkLlbeC6LEltupKzKX7bYut49ioiFiu5M';
+    
+    $json_url="https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=".$channel_id."&key=".$api_key;
+    $json = file_get_contents($json_url);
+    $listFromYouTube=json_decode($json);
+    $videos = array();
+    $i = 0;
+    foreach($listFromYouTube->items as $item){
+        $videos[$i] = [
+            'title' => $item->snippet->title,
+            'thumbnail' => $item->snippet->thumbnails->medium->url,
+            'channeltitle' => $item->snippet->channelTitle,
+            'video' => 'https://www.youtube.com/watch?v='.$item->snippet->resourceId->videoId
+        ];
+        $i++;
+    }
+    return $videos;
+}
+
+
 /**
  * Returns extra info about a given user
  *
@@ -93,9 +124,6 @@ $context['team'] = get_users([
  * @return array
  */
 
-/*echo "<pre>";
-print_r($context['spotlight']);
-die;*/
 
 function getUserInfo($person)
 {
@@ -319,5 +347,6 @@ $context['spotlight'] = getPostsSpotlight($context['spotlight']);
 $context['public'] = getPostsNews($context['public']);
 $context['character'] = getPostsCharacter($context['character']);
 $context['team'] = getTeamMembers($context['team']);
+$context['videos'] = getVideosChannel();
 $templates = array('index.twig');
 Timber::render($templates, $context);

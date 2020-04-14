@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ site.theme.link }}/assets/css/slick/slick-theme.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{{ site.theme.link }}/assets/css/index.css" type="text/css" media="screen" /> {% endblock %} {% block content %}
 <section class="pt-4 pb-5">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
              <div class="col-12 text-center mb-4 mx-auto">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center mx-auto">
@@ -16,7 +16,7 @@
             <div class="col-12">
                 <ul class="post-list p-0 d-flex align-items-center justify-content-center m-auto">
                     {% if spotlight %} {% for post in spotlight %}
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <li class="post-card post-spotlight">
                             <a href="{{ post.post_link }}" alt="Link da postagem {{ post.title }}">
                                 <span class="post-card-tag"><i class="far fa-star fa-lg"></i> Destaque</span>
@@ -35,7 +35,7 @@
                         </li>
                     </div>
                     {% endfor %} {% endif %} {% if public %}
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 px-md-0 text-center justify-content-center">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 px-md-0 text-center justify-content-center">
                         {% for post in public %}
                         <li class="post-card">
                             <a href="{{ post.post_link }}" alt="Link da postagem {{ post.title }}">
@@ -57,9 +57,52 @@
                 </ul>
             </div>
         </div>
+        <div class="row mt-3">
+            <div class="col-12 m-auto text-center">
+                <button type="button" class="col-2 btn-showmore" onclick="window.location.href = '{{ site.link }}/news/'">Ver mais</button>
+            </div>
+        </div>
     </div>
 </section>
-<!-- 
+<div class="row">
+    <div class="container">
+        <div class="col-12">
+            <div class="mini divider">
+                <div class="sk-folding-cube">
+                    <div class="sk-cube1 sk-cube"></div>
+                    <div class="sk-cube2 sk-cube"></div>
+                    <div class="sk-cube4 sk-cube"></div>
+                    <div class="sk-cube3 sk-cube"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="pt-3 pb-5 channel-videos">
+    <div class="container">
+     <div class="row">
+             <div class="col-12 text-center mb-4 mx-auto">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-center mx-auto">
+                    <h2 class="text-uppercase">Últimos vídeos de SamukaPLM"</h2>
+                    <p>Você pode encontrar nessa sessão os vídeos postados pelo youtuber SamukaPLM. Siga o canal para receber notícias sobre guias do jogo, sobre o torneio Jamiel e muito mais. Não deixem de acompanhar o canal, curtindo os vídeos e compartilhando-os para seus amigos.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="main-channel-videos w-100" id="main-channel-videos">
+                {% for item in videos %}
+                    <a href="{{ item.video }}" target="__blank">
+                        <img data-lazy="{{ item.thumbnail }}" class="text-center channel-videos" alt="{{ item.title }}"/>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!--
 <section class="py-4 last-characters parallex">
     <div class="container position-relative h-100">
         <div class="row h-100">
@@ -232,6 +275,32 @@
             }],
             prevArrow: '<button class="a-left control-c prev arrow-prev"></button>',
             nextArrow: '<button class="a-right control-c next arrow-next"></button>'
+        });
+        $('#main-channel-videos').slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            variableWidth: true,
+            responsive: [
+                {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '60px',
+                    slidesToShow: 2
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+                }
+            ]
         });
     });
 
