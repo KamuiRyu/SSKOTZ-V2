@@ -3,6 +3,7 @@ public_html/app/plugins/*
 !public_html/app/plugins/.gitkeep
 public_html/app/mu-plugins/*/
 public_html/app/upgrade
+public_html/app/cache
 public_html/app/uploads/*
 !public_html/app/uploads/.gitkeep
 
