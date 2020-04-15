@@ -18,7 +18,7 @@
 							<div class="character-img {{ post.character_rarity }}-ranking mb-1">
 								<img src="{{ post.character_thumb }}" class="img-fluid"/>
 								<div class="character-ranking {{ character.character_rarity }}-rarity">
-									<img src="{{ site.theme.link }}/assets/images/{{ post.character_rarity }}-rarity.png" alt="Raridade do personagem"/>
+									<img src="{{ site.theme.link }}/assets/images/{{ post.character_rarity }}-rarity.webp" alt="Raridade do personagem"/>
 								</div>
 							</div>
 							<h4>{{ post.character_name }}</h4>
@@ -76,7 +76,7 @@
 						<ul class="ch-cosmo-sub-list">
 							{% for sub in post.character_sub %}
 								<li class="ch-cosmo-sub-item">
-									<img src="{{ site.theme.link }}/assets/images/{{sub}}_icon.png">
+									<img src="{{ site.theme.link }}/assets/images/{{sub}}_icon.webp">
 									{% if sub == 'atqf' %}
 										<span>Ataque físico</span>
 									{% elseif sub == 'atqc' %}
@@ -115,16 +115,16 @@
 						<!-- PV STATUS -->
 						<div class="ch-status">
 							<div class="ch-status-icon d-inline-block">
-								<img src="{{ site.theme.link }}/assets/images/pv_icon.png">
+								<img src="{{ site.theme.link }}/assets/images/pv_icon.webp">
 							</div>
 							{% if post.character_pv < 12486 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_c.webp">
 							{% elseif post.character_pv >= 12486 and post.character_pv < 13650 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_b.webp">
 							{% elseif post.character_pv >= 13650 and post.character_pv < 16120 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_a.webp">
 							{% elseif post.character_pv >= 16120 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_s.webp">
 							{% endif %}
 							<div class="ch-status-type d-inline-block">
 								Saúde
@@ -135,16 +135,16 @@
 						<!-- ATQ F STATUS -->
 						<div class="ch-status">
 							<div class="ch-status-icon d-inline-block">
-								<img src="{{ site.theme.link }}/assets/images/atqf_icon.png">
+								<img src="{{ site.theme.link }}/assets/images/atqf_icon.webp">
 							</div>
 							{% if post.character_atq_f < 2057 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_c.webp">
 							{% elseif post.character_atq_f >= 2057 and post.character_atq_f < 2631 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_b.webp">
 							{% elseif post.character_atq_f >= 2631 and post.character_atq_f < 2818 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_a.webp">
 							{% elseif post.character_atq_f >= 2818 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_s.webp">
 							{% endif %}
 							<div class="ch-status-type d-inline-block">
 								Ataque físico
@@ -155,16 +155,16 @@
 						<!-- ATQ C STATUS -->
 						<div class="ch-status">
 							<div class="ch-status-icon d-inline-block">
-								<img src="{{ site.theme.link }}/assets/images/atqc_icon.png">
+								<img src="{{ site.theme.link }}/assets/images/atqc_icon.webp">
 							</div>
 							{% if post.character_atq_c < 2079 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_c.webp">
 							{% elseif post.character_atq_c >= 2079 and post.character_atq_c < 2420 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_b.webp">
 							{% elseif post.character_atq_c >= 2420 and post.character_atq_c < 2728 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_a.webp">
 							{% elseif post.character_atq_c >= 2728 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_s.webp">
 							{% endif %}
 							<div class="ch-status-type d-inline-block">
 								Ataque cósmico
@@ -175,14 +175,14 @@
 						<!-- DEF F STATUS -->
 						<div class="ch-status">
 							<div class="ch-status-icon d-inline-block">
-								<img src="{{ site.theme.link }}/assets/images/deff_icon.png">
+								<img src="{{ site.theme.link }}/assets/images/deff_icon.webp">
 							</div>
 							{% if post.character_def_f < 434 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_c.webp">
 							{% elseif post.character_def_f >= 434 and post.character_def_f < 498 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_b.webp">
 							{% elseif post.character_def_f >= 498 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_a.webp">
 							{% endif %}
 							<div class="ch-status-type d-inline-block">
 								Defesa física
@@ -193,16 +193,16 @@
 						<!-- DEF C STATUS -->
 						<div class="ch-status">
 							<div class="ch-status-icon d-inline-block">
-								<img src="{{ site.theme.link }}/assets/images/defc_icon.png">
+								<img src="{{ site.theme.link }}/assets/images/defc_icon.webp">
 							</div>
 							{% if post.character_def_c < 434 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_c.webp">
 							{% elseif post.character_def_c >= 434 and post.character_def_c < 486 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_b.webp">
 							{% elseif post.character_def_c >= 486 and post.character_def_c < 533 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_a.webp">
 							{% elseif post.character_def_c >= 533 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_s.webp">
 							{% endif %}
 							<div class="ch-status-type d-inline-block">
 								Defesa cósmica
@@ -213,16 +213,16 @@
 						<!-- VELOCIDADE STATUS -->
 						<div class="ch-status">
 							<div class="ch-status-icon d-inline-block">
-								<img src="{{ site.theme.link }}/assets/images/speed_icon.png">
+								<img src="{{ site.theme.link }}/assets/images/speed_icon.webp">
 							</div>
 							{% if post.character_speed < 162 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_c.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_c.webp">
 							{% elseif post.character_speed >= 162 and post.character_speed < 228 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_b.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_b.webp">
 							{% elseif post.character_speed >= 228 and post.character_speed < 351 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_a.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_a.webp">
 							{% elseif post.character_speed >= 351 %}
-								<img src="{{ site.theme.link }}/assets/images/rank_s.png">
+								<img src="{{ site.theme.link }}/assets/images/rank_s.webp">
 							{% endif %}
 							<div class="ch-status-type d-inline-block">
 								Velocidade
@@ -348,7 +348,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb1.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb1.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">0</span>
 													</div>
@@ -362,13 +362,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 														</ul>
 													</div>
@@ -389,7 +389,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb2.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb2.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">0</span>
 													</div>
@@ -403,13 +403,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 														</ul>
 													</div>
@@ -430,7 +430,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb3.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb3.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">0</span>
 													</div>
@@ -444,13 +444,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 														</ul>
 													</div>
@@ -474,7 +474,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb4.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb4.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">0</span>
 													</div>
@@ -488,13 +488,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 														</ul>
 													</div>
@@ -515,7 +515,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb5.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb5.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">1</span>
 													</div>
@@ -529,13 +529,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 														</ul>
 													</div>
@@ -556,7 +556,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb6.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb6.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">1</span>
 													</div>
@@ -570,13 +570,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 														</ul>
 													</div>
@@ -600,7 +600,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb7.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb7.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">0</span>
 													</div>
@@ -614,13 +614,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 														</ul>
 													</div>
@@ -641,7 +641,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb8.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb8.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">2</span>
 													</div>
@@ -655,13 +655,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 														</ul>
 													</div>
@@ -682,7 +682,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb9.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb9.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">2</span>
 													</div>
@@ -696,13 +696,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 														</ul>
 													</div>
@@ -726,7 +726,7 @@
 										<div class="ch-skill-details w-100">
 											<div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
 												<div class="ch-skill-img-block">
-													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb10.png" class="ch-skill-img">
+													<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidoncomb10.webp" class="ch-skill-img">
 													<div class="ch-skill-cost">
 														<span class="text-white font-stroke text-center">0</span>
 													</div>
@@ -740,13 +740,13 @@
 													<div class="ch-skill-comb mt-4">
 														<ul class="ch-skill-comb-list">
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon1.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon2.webp">
 															</li>
 															<li>
-																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.png">
+																<img src="{{ site.link }}/app/uploads/2020/04/skill_poseidon3.webp">
 															</li>
 														</ul>
 													</div>
@@ -782,7 +782,7 @@
 										<li>
 											<div class="{{ post.character_rarity }}-ranking">
 												<img src="{{ post.character_thumb }}" class="ch-comp-char-img">
-												<img src="{{ site.theme.link }}/assets/images/{{ post.character_rarity }}-rarity.png" class="ch-comp-char-rarity">
+												<img src="{{ site.theme.link }}/assets/images/{{ post.character_rarity }}-rarity.webp" class="ch-comp-char-rarity">
 											</div>
 
 										</li>
@@ -791,7 +791,7 @@
 												<div class="{{ char.rarity }}-ranking">
 													<a href="{{ char.link }}">
 														<img src="{{ char.img }}" class="ch-comp-char-img">
-														<img src="{{ site.theme.link }}/assets/images/{{ char.rarity }}-rarity.png" class="ch-comp-char-rarity">
+														<img src="{{ site.theme.link }}/assets/images/{{ char.rarity }}-rarity.webp" class="ch-comp-char-rarity">
 													</a>
 												</div>
 											</li>
