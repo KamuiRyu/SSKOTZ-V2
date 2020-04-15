@@ -157,6 +157,8 @@
                         <span style="vertical-align: middle;">
                           {% if cosmo.cosmo_bonus == 'atqf' %}
                             Ataque físico +10%
+                          {% elseif cosmo.cosmo_bonus == 'as' %}
+                            Acerto de status +15%
                           {% elseif cosmo.cosmo_bonus == 'atqc' %}
                             Ataque cósmico +10%
                           {% elseif cosmo.cosmo_bonus == 'dmgc' %}
@@ -169,8 +171,6 @@
                             Resistência á dano cósmico +10%
                           {% elseif cosmo.cosmo_bonus == 'rs' %}
                             Resistência a status +15%
-                          {% elseif cosmo.cosmo_bonus == 'as' %}
-                            Acerto de status +15%
                           {% elseif cosmo.cosmo_bonus == 'pf' %}
                             Perfuração física +100
                           {% endif %}
