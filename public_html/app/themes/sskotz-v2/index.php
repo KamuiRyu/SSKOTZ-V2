@@ -93,7 +93,7 @@ $context['team'] = get_users([
  * @param [type] $person
  * @return array
  */
-
+/*
 
 function getVideosChannel(){
     $channel_id = 'UUfhfWhrL7BNK6-_VtoXMdlA';
@@ -115,7 +115,7 @@ function getVideosChannel(){
     }
     return $videos;
 }
-
+*/
 
 /**
  * Returns extra info about a given user
