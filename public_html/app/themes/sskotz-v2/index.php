@@ -347,6 +347,5 @@ $context['spotlight'] = getPostsSpotlight($context['spotlight']);
 $context['public'] = getPostsNews($context['public']);
 $context['character'] = getPostsCharacter($context['character']);
 $context['team'] = getTeamMembers($context['team']);
-$context['videos'] = getVideosChannel();
 $templates = array('index.twig');
 Timber::render($templates, $context);
