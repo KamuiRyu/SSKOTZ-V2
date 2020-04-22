@@ -472,7 +472,7 @@ main .parallex {
     border-right: 0 solid transparent;
   }
   .post-spotlight {
-    height: 436px !important;
+    height: 300px !important;
     width: 100% !important;
   }
   .icharacter .character-info {
@@ -511,7 +511,7 @@ main .parallex {
     border-right: 0 solid transparent;
   }
   .post-spotlight {
-    height: 436px !important;
+    height: 350px !important;
     width: 100% !important;
   }
   .icharacter .character-info {
@@ -540,7 +540,7 @@ main .parallex {
     border-right: 0.25rem solid transparent;
   }
   .post-spotlight {
-    height: 436px !important;
+    height: 400px !important;
     width: 100% !important;
   }
   .character-info {
@@ -568,6 +568,10 @@ main .parallex {
 }
 
 @media only screen and (min-width: 992px) {
+  .post-spotlight {
+    height: 450px !important;
+    width: 100% !important;
+  }
   .icharacter .character-picture {
     right: 0;
   }
